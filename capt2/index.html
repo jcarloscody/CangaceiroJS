@@ -9,53 +9,52 @@
 </head>
 <body>
 
-<form class="form">
-    <div class="form-group">
-        <label for="data">Data</label>
-        <input type="date" id="data" class="form-control" required autofocus/>
+    <form class="form">
+        <div class="form-group">
+            <label for="data">Data</label>
+            <input type="date" id="data" class="form-control" required autofocus/>
+        </div>
+
+        <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input	type="number"	min="1"	step="1"	id="quantidade"	class="form-control"	value="1"	required/>
+        </div>
+        
+        <div class="form-group">
+            <label	for="valor">Valor</label>
+            <input	id="valor"	type="number"	class="form-control" min="0.01"	step="0.01"	value="0.0"	required	/>
+        </div>
+        
+        <button	class="btn	btn-primary"	type="submit">Incluir</button>
+    </form>
+
+
+    <div class="text-center">
+        <button	id="botao-importa"	class="btn	btn-primary	text-center"	type="button"> Importar	Negociações	</button>
+        <button	id="botao-apaga"	class="btn	btn-primary	text-center"	type="button">Apagar</button>
     </div>
 
-    <div class="form-group">
-        <label for="quantidade">Quantidade</label>
-        <input	type="number"	min="1"	step="1"	id="quantidade"	class="form-control"	value="1"	required/>
-    </div>
-    
-    <div class="form-group">
-        <label	for="valor">Valor</label>
-        <input	id="valor"	type="number"	class="form-control" min="0.01"	step="0.01"	value="0.0"	required	/>
-    </div>
-    
-    <button	class="btn	btn-primary"	type="submit">Incluir</button>
-</form>
+    <br>
+    <br>
+
+    <div id="negociacoes"></div>
+    <div	id="mensagemView"></div>
+            
 
 
-<div class="text-center">
-    <button	id="botao-importa"	class="btn	btn-primary	text-center"	type="button"> Importar	Negociações	</button>
-    <button	id="botao-apaga"	class="btn	btn-primary	text-center"	type="button">Apagar</button>
-</div>
-
-<br>
-<br>
-
-<table	class="table	table-hover	table-bordered">
-    <thead>
-        <tr>
-            <th>DATA</th>
-            <th>QUANTIDADE</th>
-            <th>VALOR</th>
-            <th>VOLUME</th>
-        </tr>
-    </thead>
-
-    <tbody>
-    </tbody>
-    
-    <tfoot>
-    </tfoot>
-</table>
-
-    <script src="./client/app/domain/negociacao/Negociacao.js"></script>
     <script src="./client/app/controllers/NegociacaoController.js"></script>
-    <script src="./client/app/app.js"></script>
+    <script src="./client/app/domain/negociacao/Negociacao.js"></script>
+    <script src="./client/app/domain/negociacao/Negociacoes.js"></script>
+    <script src="C:\Users\developer\Documents\Repositorios\CangaceiroJS\capt2\client\ui\converters\DateConverter.js"></script>
+    <script	src="C:\Users\developer\Documents\Repositorios\CangaceiroJS\capt2\client\ui\views\View.js"></script>
+    <script	src="C:\Users\developer\Documents\Repositorios\CangaceiroJS\capt2\client\ui\views\NegociacoesViews.js"></script>
+    <script	src="C:\Users\developer\Documents\Repositorios\CangaceiroJS\capt2\client\ui\models\Mensagem.js"></script>
+    <script	src="C:\Users\developer\Documents\Repositorios\CangaceiroJS\capt2\client\ui\views\MensagemView.js"></script>
+    
+    <script src="./client/app/app.js"></script><!--CUIDADO COM A ORDEM DE IMPORTACAO!        Essa	dependência	entre	scripts	é	um	dos	tendões	de	Aquiles	do JavaScript.	 Isso	 faz	 com	 que	 o	 desenvolvedor	 assuma	 a responsabilidade	de	importar	os	scripts	de	sua	aplicação	na	ordem correta.	 Aprenderemos	 a	 solucionar	 esse	 problema	 através	 dos módulos	do	ES2015	(ES6),-->
+    <!--	app.js	agora	sempre	será	o	último	script	porque	ele	é	o	resp onsável	em	instanciar	NegociacaoController	que	por	conseguinte	de pende	de	outras	classes	-->
+
+    
+    
 </body>
 </html>

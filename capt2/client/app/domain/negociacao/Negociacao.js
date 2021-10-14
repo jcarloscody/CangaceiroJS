@@ -1,4 +1,5 @@
 class Negociacao {
+    
     #data;
     #qquantidade;
     constructor(data, quantidade, valor){
@@ -6,6 +7,7 @@ class Negociacao {
         this.#qquantidade= quantidade;
         this.#data = data;
         this.valor = valor;
+        //this.obtemVolume;
         //Object.freeze(this); //congelando a instancia do construtor
     }
 
@@ -15,6 +17,14 @@ class Negociacao {
 
     get getDate(){
         return this.#data;
+    }
+
+    get Quantidade(){
+        return this.#qquantidade;
+    }
+
+    get Data() {
+        return this.#data
     }
 }
 
