@@ -1,0 +1,34 @@
+ng new communication-app
+
+cd communication-app
+
+ng add @angula/material
+
+
+
+ng g c Input-binding
+ng serve
+
+
+
+ng g c Input-binding/client
+ng serve
+
+
+ng g c Event
+ng serve
+
+ng g c event/ChildItem
+ng serve
+
+ng g c Clients
+ng serve
+
+ng g c clients/intemclient
+ng serve
+
+ng g c parentchild
+
+ng g c parentchild/timer
+ng serve
+

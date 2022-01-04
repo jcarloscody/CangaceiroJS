@@ -1,0 +1,15 @@
+
+CRIAÇÃO DE NOVO PROJETO --->>>>>>
+ng new lifecycle
+
+cd lifecycle
+
+code .
+
+ng add @angular/material
+
+
+ng g c mainlifecycle -m app
+
+ng g c mainlifecycle/lifecyclechild -m app
+

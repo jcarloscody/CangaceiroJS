@@ -1,0 +1,47 @@
+prompt >>>>>>>>>>>>
+npm -v
+npm install -g @angular/cli  >> instalar a ferramenta do angular
+ng new project
+cd project
+ng serve >> vai abrir uma porta aqui  localhost:4200
+control c - sai
+>>>>>>>>>>>> para o mongo
+ir no path e colocar o path na variavel de ambiente
+> mongo  >>>> porta 27017
+quit() sai
+
+>> 
+cd nome_do_projeto
+code . >serve para abrir o projeto com o visual studio code
+
+***********************************************************************************************
+3 FORMAS DE FAZER O SELECT
+'nome' >> será chamado pela tag - <nome></nome>
+['nome'] >> desta forma será uma diretiva, assim não será chamado por tag, mas como diretiva.   <div nome></div>
+'.nome' >> será utilizado como uma classe >>> <div class="nome"> </div>
+
+****************************************************************************************
+CRIAR NOVO COMPONENTE
+
+ng generate component (nome)  OU ng g c (nome)
+
+>> novo componente dentro do componente x
+ng g c x/nomedonovocomponente
+
+********************************************************************************************
+INSTALAÇÃO DO NODE_MODULES
+npm i
+
+npm install --save nome_do_pacote    >>  para instalar pacotes
+
+********************************************************************************************
+MATERIAL DESIGN 
+material.angular.io 
+
+
+ng new nome-app
+
+ng add @angular/material    | adiciona o material angular DESIGN
+
+ng g c (nome-app)
+

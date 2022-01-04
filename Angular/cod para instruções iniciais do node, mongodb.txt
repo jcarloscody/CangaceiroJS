@@ -1,0 +1,76 @@
+PROMPT
+
+PARA O ANGULAR - NODE
+npm  -v
+npm install -g @angular/cli
+ng new proj1
+modelo CSS
+-------------------------------------------------
+cd proj1
+ng serve
+locahost: 4200  // para teste só colocar no browser
+
+**************************************************
+PARA O MONGO -> para ver se está funcionando
+
+instalar no Path
+1 - copiar o caminho do path ->> C:\Program Files\MongoDB\Server\4.4\bin
+2 - computador - propriedades
+3 - conf avançada do sistema
+4 - variáveis de ambiente
+5 - abrir o path
+6 - colar lá
+7 - digitar no prompt mongo, para testar
+
+27017 porta do mongodb
+
+
+
+
+
+
+
+
+
+
+
+*****************************************************************************
+
+INSTALAÇÃO NO LINUX
+
+# Instalação do Node / NPM
+ 
+https://developer.mozilla.org/pt-BR/docs/Aprender
+https://www.w3schools.com/html/default.asp
+ 
+
+
+
+# Verifique as versões instaladas: 
+node -v
+npm -v 
+ 
+# Instale o angular-cli:
+sudo npm install -g @angular/cli
+ 
+# Testando a instalação do angular-cli
+cd ~
+ng new projetoteste
+cd projeto teste
+ng serve
+# Abra seu navegador em: http://localhost:4200
+ 
+ 
+# Instalando o MongoDB:
+ 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+ 
+# Para Ubuntu 18.04:
+echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+# Para Ubuntu 16.04:
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+ 
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+ 
+

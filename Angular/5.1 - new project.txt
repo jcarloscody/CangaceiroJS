@@ -1,0 +1,326 @@
+*************************     NOVO PROJETO  -------------------
+
+
+$$$$$$$ PROMPT
+
+- ng new products-app
+- ng g c ProductForm
+- ng g c ProductForm -m app
+- ng g c DepartmentForm -m app
+- ng g c Products-Table - app 
+
+
+
+
+$$$$$$$$  terminal vs
+
+ng add @angular/material
+npm install --save @angular/fles-layout
+ng g s Department
+ng g s Product
+
+
+$$$$$$$ CRIAÇÃO DE ARQUIVO E PASTAS
+
+(app)   material.module.ts
+(app)   (models)
+(models)  department.model.ts
+(models)  product.models.ts
+
+
+
+
+$$$$$$ IMPORTS
+
+<app.module.ts>  FormsModule, MaterialModule, FlexLayoutModule, 
+
+
+
+
+$$$$$ IMPORT
+
+<app.module.ts>  import {FlexLayoutModule} from '@angular/flex-layout';
+<product-form.component.ts>   import { Department} from '../models/department.model';
+
+
+
+
+$$$$$$$$$ HTML
+
+(app)<app.component.html>
+
+<mat-tab-group>
+    <mat-tab label="New Department">
+        <app-department-form></app-department-form>
+    </mat-tab>
+    <mat-tab label="New Product">
+        <app-product-form></app-product-form>
+    </mat-tab>
+    <mat-tab label="Product">
+        <app-products-table></app-products-table>
+    <mat-tab>
+</mat-tab-group>
+
+
+
+(department-form)<department-form.component.html>
+<mat-card fxFlex>
+<mat-card-title>
+    <h4> New Department </h4
+</mat-card-title>
+
+<mat-card-content>
+
+    <div fxLayout="row" fxLayoutAlign="space-between streetch">
+         <mat-form-fiel fxFlex="100">
+             <input matInput placeholder="Department name" [(ngModel)]="depName">
+         </mat-form-field>
+    </div>
+
+</mat-card-content>
+
+<mat-card-actions>
+    <button mat-button color="primary" (click)="save()"> Save </button>
+    <button mat-button color="accent" (click)="clear()"> Clear</button>
+<mat-card-action>
+
+<mat-card>
+
+
+
+
+(product-form)<product-form.component.html>
+<mat-card fxFlex>
+	<mat-card-title>
+		<h4> New Product </h4>
+	</mat-card-title>
+	<mat-card-content>
+		<div fxLoyoutAlign="space-between start">
+			<mat-form-field fxFlex="100">
+				<input matInput placeholder="Product name" [(ngModel)]="name">
+			</mat-form-fiel>
+		</div>
+
+		<div fxLayout="row" fxLayoutAlign="space-between start">
+
+			<mat-form-field fxFlex="60">
+				<mat-select placeholder="Departament" [(ngModel)]="department">
+					<mat-option *ngFor='let dep of departments' [value]="dep"> {{dep.name}}</mat-option>
+				</mat-select>
+			<mat-form-field>
+
+			<mat-form-field fxFlex="60">
+				<input matInput placeholder="Price" type="number" [(ngModel)]="price">
+				<span matPrefix>$&nbsp</span>		
+			<mat-form-field>
+		</div>
+		
+		<div fxLayout="column" fxLayoutAlign="space-between stretch">
+			<mat-form-field>
+				<textarea matInput placeholder="Product description" [(ngModel)]="description>
+				</textarea>
+			</mat-form-fiel>
+		</div>
+
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-button color="primary" (click)="save()"> Save </button>
+		<button mat-button color="accent" (click)="clear()"> Clear </button>
+	<mat-card-actions>
+<mat-card>
+
+
+
+
+(products-table)<products-table.component.html>
+<div fxLayout="row" fxLayoutAlign="space-around stretch">
+   <table fxFlex mat-table [dataSource]="products">
+      <ng-container matColumnDef="id">
+         <th mat-header-cell *matHeaderCellDef> ID </th>
+         <td mat-cell *matCellDef="let p"> {{p.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="prodname">
+         <th mat-header-cell *matHeaderCellDef> Product Name </th>
+         <td mat-cell *matCellDef="let p"> {{p.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+         <th mat-header-cell *matHeaderCellDef> Price </th>
+         <td mat-cell *matCellDef="let p"> {{p.price}} </td>
+      </ng-container>
+      <ng-container matColumnDef="discription">
+         <th mat-header-cell *matHeaderCellDef> Discription </th>
+         <td mat-cell *matCellDef="let p"> {{p.description}} </td>
+      </ng-container>
+      <ng-container matColumnDef="department">
+         <th mat-header-cell *matHeaderCellDef> Department </th>
+         <td mat-cell *matCellDef="let p"> {{p.department.name}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef = "Prodcolumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: Prodcolumns"</tr>
+   </table>
+</div>
+
+
+
+$$$$$$$$$$ JAVASCRIPT  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+(department-form)<department-form.component.spec.ts>
+--------- antes do constructor (){}
+depName: string;
+
+------------------no construtor
+constructor (private departmentService: DepartmentService) {
+}
+
+---------------------------- após o ngOnInit
+save(){
+	this.departmentService.addDepartment({name: this.depName});
+	this.clear();	
+}
+clear(){
+	this.depName="";
+}
+
+
+
+
+(product-form)<product-form.component.ts>
+
+--------- antes do constructor (){}
+name: string;
+department: Department;
+price: number;
+description: string;
+departments: Department[];
+---------------------no constructor
+constructor (private productService: ProducService, 
+private departmentService: DepartmentService)
+{}
+--------------------------no ngOnInit
+this.departments = this.departmentService.getDepartments();
+---------------------------- após o ngOnInit
+save(){
+this.productService.addProduct({  
+name: this.name,
+price: this.price,
+description: this.description,
+department: this.department};
+this.clear();
+}
+clear(){
+this.name="";
+this.price=0;
+this.description="";
+this.department=null;
+}
+
+
+
+(models) <department.model.ts>
+export interface Department {
+	name: string;
+	id?: number;  //com interrogacao é opcional
+}
+
+
+
+
+(models) <product.model.ts>
+import { Department } from './department.model';
+
+export interface Product{
+	id?: number;   //não obrigatorio
+	name: string;
+	price: number;
+	description: string;
+	department: Department;
+}
+
+
+
+
+(app)<department.service.ts>
+---------------------antes do constructor
+private departments: Department[] = [
+	{id: 1, name: "Clothing"},
+	{id: 2, name: "not"},
+	{id: 3, name: "books"},
+	{id: 4, name: "pen"},
+];
+private nextID: number = 5;
+-----------------------------------após o construct
+getDepartments(): Department[]{
+	return this.departments;
+}
+
+addDepartment(d: Department){
+	this.departments.push({...d, id: this.nextID++});
+	console.log(this.departments);
+}
+
+getDepartmentById(id: number): Department{
+	return this.departments.find((d) => d.id == id);
+}
+
+
+
+
+(app)<product.service.ts>
+----------------------antes do constructor
+private dataFromServer: any[] = [
+	{id: 1, name: "laptop", department_id: 4, price: 40, description:'Laptop'},
+	{id: 2, name: "laptop", department_id: 4, price: 40, description:'Laptop'},
+	{id: 3, name: "laptop", department_id: 4, price: 40, description:'Laptop'},
+	{id: 4, name: "laptop", department_id: 4, price: 40, description:'Laptop'},
+];
+
+private products: Product[] = [];
+private nextID: number;
+onNewProduct: EventEmitter<Product> = new EventEmitter<Product>();
+
+------------------------no constructor
+constructor(private departmentService: DepartmentService) {
+   for (let p of this.dataFromServer){
+	this.products.push({
+		id: p.id,
+		name: p.name,
+		description: p.description,
+		price: p.price,
+		department: this.departmentService.getDepartmentById(p.id)
+	});
+	this.nextID= p.id+1;
+}
+}
+
+-------------------------------------após constructor
+getProduct(): Product[] {
+	return this.products;
+}
+
+addProduct(p: Product){
+         let prod: Product = {id: this.nextID++, ...p};
+	this.products.push(prod);
+         console.log(this.products);
+         this.onNewProduct.emit(prod);
+         
+}
+
+
+
+
+(products-table)<products-table.components.ts>
+---------------------------------antes no constru
+@ViewChild(MatTable) datatable: MatTable<any>;
+products: Product[];
+prodColumns: string[] = ["id", "prodname", "department", "price", "description"];
+------------------------no construc
+constructor (private productService: ProductService){}
+--------------------------no ngOnInit
+this.products=this.productService.getProducts();
+this.productService.onNewProduct.subscribe((p) => {
+this.datatable.renderRows()});
+
+$$$$$$ LOCAIS PARA PEGAR OS ELEMENTOS MATERIAL
+
+- tabs

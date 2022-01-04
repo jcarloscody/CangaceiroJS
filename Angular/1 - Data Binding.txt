@@ -1,0 +1,6 @@
+ng new projeto-data-binding-app
+ng add @angular/material
+ng g c StringInterpolation
+ng g c PropertyBinding
+ng serve
+
