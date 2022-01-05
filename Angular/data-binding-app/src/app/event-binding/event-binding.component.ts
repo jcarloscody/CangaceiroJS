@@ -9,13 +9,15 @@ export class EventBindingComponent implements OnInit {
 
   buttonName = "My button";
   i = 0;
-  constructor() { }
   spinnerMode = "determinate";
   btnEnable = true;
   selectDisabled = false;
   selectedOption = 1;
 
   inputName = "john";
+  
+  constructor() { }
+  
 
   ngOnInit() {
   }
