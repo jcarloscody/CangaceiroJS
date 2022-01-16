@@ -13,11 +13,14 @@ injetaveis
 
 ng g m MODULE1  ::::::: GERA MODULO
 ng g m MODULE2
-ng g c modulo1/component1
+
+ng g c modulo1/component1    ::::: gera componente dentro de modulo
 ng g c modulo1/component2
 ng g c modulo2/component3
 ng g c modulo2/component4
-ng g s modulo2/service1
+
+
+ng g s modulo2/service1:::: gera servico
 ng g s service2
 
 

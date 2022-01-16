@@ -4,7 +4,6 @@
 $$$$$$$ PROMPT
 
 - ng new products-app
-- ng g c ProductForm
 - ng g c ProductForm -m app
 - ng g c DepartmentForm -m app
 - ng g c Products-Table - app 
@@ -15,7 +14,7 @@ $$$$$$$ PROMPT
 $$$$$$$$  terminal vs
 
 ng add @angular/material
-npm install --save @angular/fles-layout
+npm install --save @angular/flex-layout
 ng g s Department
 ng g s Product
 
