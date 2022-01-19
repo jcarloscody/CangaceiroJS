@@ -1,0 +1,11 @@
+npm install -g typescript
+
+tsc scritp.ts 
+
+babel - pega os novos recursos do JS  e adapta aos pcs mais antigos
+
+webpack - é uma ferramenta de construcao que usamos no desenvolvimento web front-end moderno 
+
+
+npm install --save-dev lite-server    /colocar o start no json apontando para o "lite-server"
+npm start
