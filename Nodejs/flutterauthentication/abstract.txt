@@ -1,0 +1,30 @@
+
+
+https://nodeauthjo.herokuapp.com
+
+ENDPOINTS
+/adduser   ::: add new user
+{
+"nome":"",
+"password": ""
+}
+
+
+
+/authenticate    ::  check user password
+{
+"nome":"...",
+"password": "..."
+}
+
+
+
+
+
+principais dependecias usadas:
+bcrypt
+mongoose
+jwt-simple
+
+BD
+https://cloud.mongodb.com/   :: disponibiliza cerca de 500MB free
