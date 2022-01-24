@@ -1,3 +1,5 @@
+//tsc
+
 function add(n1:number, n2: number) {
     console.log(typeof n1);
     // if (typeof n1 !== 'number' || typeof n2 !== 'number') {
@@ -75,3 +77,62 @@ let p2 = {
 }
 
 console.log(p2.role)
+
+//any é desvangatagem
+let favoriteActivities2 :  any[];
+favoriteActivities2 = ['sd',1];
+
+
+
+//UNION TYPES
+function combine(input1:string | number, input2: number | string, resultAs: 'as-number' | 'as-text') { //esse resultAs é chamado tipo literal
+    let result;
+
+    if (typeof input1 ==='number' && typeof input2==='number' && resultAs === 'as-number') {
+        result = +input1 + +input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+
+    return result;
+}
+
+
+console.log(combine('shoso', 2, 'as-number'));
+
+
+//TYPE ALIASES | CUSTOM TYPES
+type Combinable = number | string;
+type ConversionDescriptor = 'as-number' | 'as-text';
+function combine3(input1:Combinable, input2: Combinable, resultAs: ConversionDescriptor) { //esse resultAs é chamado tipo literal
+    let result;
+    if (typeof input1 ==='number' && typeof input2==='number' && resultAs === 'as-number') {
+        result = +input1 + +input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
+}
+
+
+
+type User = { name: string; age: number };
+
+const u1: User = { name: 'Max', age: 30 }; // this works!
+
+function isOlder(user: User, checkAge: number) {
+    return checkAge > user.age;
+}
+
+
+
+//FUNCTIONS AS TYPES - nos permite descrever qual tipo de funcao especificamente quremos usar em algum lugar
+
+function addd(n1:number, n2: number) {
+    return n1 + n2;
+}
+
+let combineValues: (a:number, b:number)=>number;
+//combineValues = 2; erro
+combineValues = addd;
+console.log('++++' + combineValues(9,9));
