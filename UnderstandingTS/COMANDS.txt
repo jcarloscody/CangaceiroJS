@@ -1,6 +1,7 @@
 npm install -g typescript
 
 tsc scritp.ts 
+tsc scritp.ts --watch OU -w
 
 babel - pega os novos recursos do JS  e adapta aos pcs mais antigos
 

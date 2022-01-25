@@ -136,3 +136,18 @@ let combineValues: (a:number, b:number)=>number;
 //combineValues = 2; erro
 combineValues = addd;
 console.log('++++' + combineValues(9,9));
+
+
+
+
+//CALLBACK
+function addAndHandle(n1:number, n2:number, cb: (value:number)=>void ) {
+    let result = n1 + n2;
+    cb(result);
+}
+
+let fun = function(v){
+    console.log(v);
+}
+
+addAndHandle(1,2200,fun)
