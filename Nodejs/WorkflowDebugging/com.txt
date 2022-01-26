@@ -1,0 +1,14 @@
+    "start": "node app.js",                 npm start                       ||  OU, nao precisa usar os dois
+    "start-server": "node app.js"           npm run start-server
+
+
+
+npm install 
+
+
+--save-dev     :para instalar dependencia de desenvolvimento e indicar que usaremos apenas para o desenvolvimento
+-g    :: global
+
+
+-----------------------nodemon LOCAL
+    "start": "nodemon app.js",       npm start
