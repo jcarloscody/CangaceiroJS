@@ -146,8 +146,37 @@ function addAndHandle(n1:number, n2:number, cb: (value:number)=>void ) {
     cb(result);
 }
 
-let fun = function(v){
+let fun = function(v:number){
     console.log(v);
 }
 
 addAndHandle(1,2200,fun)
+
+
+//-------------------------------
+let button = document.getElementById('nome')!;  //! informa ao ts que o dev sabe que existe este botao ou que esta operação produzira valor nao nulo
+let buttonPodeSerNulo = document.getElementById('nome');  //nao precisa de ! pq tem verificacao, mais clean
+
+button.addEventListener('click', ()=> {
+    console.log('clicou')
+})
+
+
+function clickHendler() {
+    console.log('clicked')
+}
+if (buttonPodeSerNulo) {
+    button.addEventListener('click', clickHendler) ; //passando funcao anonima
+}
+
+
+function clickHendler2(message: string) {
+    console.log(`${message}`)
+}
+if (buttonPodeSerNulo) {
+    button.addEventListener('click', _=>clickHendler2("hello")) //agora a funcao que quero colocar aqui tem parametro, mas nao posso colocar () pois executa, entao tenho que colocar dentor de uma funcao anonima
+}
+
+if (buttonPodeSerNulo) {
+    button.addEventListener('click', clickHendler2.bind(null, 'heeloo'))
+}

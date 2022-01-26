@@ -10,3 +10,11 @@ webpack - é uma ferramenta de construcao que usamos no desenvolvimento web fron
 
 npm install --save-dev lite-server    /colocar o start no json apontando para o "lite-server"
 npm start
+
+
+-------------------------------------------------
+tsc -- init
+::cria o tsconfig.json - é um inidicador para o texto datilografado e o projeto em que esse arquivo se encontra e todas as subpastas
+dessa pasta devem ser gerenciadas por ts
+:: digite apenas o tsc e compilará todos os .ts
+:: OU tsc --watch  OU   tsc -w
