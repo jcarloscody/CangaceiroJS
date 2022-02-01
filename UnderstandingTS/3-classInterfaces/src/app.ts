@@ -1,46 +1,17 @@
-class Department {
-    nome: string; //public padrao
-    private employees: string[]= [];
+//INTERFACE - descreve a estrutura de um objeto. não será usado como um modelo, mas como um tipo personalizado
 
-    constructor(n: string, private lastName: string, private readonly cpf: string){//aqui temos duas forma de inicializar ou criar uma field
-        this.nome= n ;
-    }
-
-    describe(this: Department){  //o this aqui não é um parametro, é interpretado pelo ts como uma dica sobre o queisso deve ser referido
-        console.log(`Department : ${this.nome} Last: ${this.lastName}  ${this.printEmployeeInformation()}`)
-    }
-
-    addEmployee(employee: string){
-        this.employees.push(employee);
-    }
-
-    printEmployeeInformation(){
-        console.log(this.employees.length)
-        console.log(this.employees)
-    }
+interface Person {
+    name: string;
+    age: Number;
+    greet(phrase: string): void;
 }
 
-let accounting = new Department('Accounting', 'dp', '21212');
+let p1: Person;
 
-console.log(accounting)
-
-accounting.describe()
-
-
-//se liga 
-let accountingCopy = {
-    nome:'vanilhaa',
-    describe : accounting.describe  //está passando apenas a descrição da função, mas não a execução da funcao do objeto accounting. desta forma o this vai se referir ao objeto literal. para isto é importante colocar o this nos methods
+p1 = {
+    name : 'lk',
+    age : 12,
+    greet (phrase) {
+        console.log(`${phrase}, my name ${this.name}`)
+    }
 }
-//accountingCopy.describe()
-
-accounting.addEmployee('josue')
-accounting.addEmployee('max')
-
-accounting.printEmployeeInformation()
-
-
-
-
-
-
