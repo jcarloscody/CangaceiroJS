@@ -1,0 +1,9 @@
+docker build .              //cria imagem do arquivo docker. ele irá construir uma imagem baseada no aruiqvo docker
+
+docker run -p 3000:3000 ID_imagem    //-p 3000:3000  é para quando tiver porta para rodar
+
+
+docker ps     //lista todos container 
+
+
+docker stop nome_container
