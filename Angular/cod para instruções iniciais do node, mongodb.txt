@@ -1,14 +1,4 @@
-PROMPT
 
-PARA O ANGULAR - NODE
-npm  -v
-npm install -g @angular/cli
-ng new proj1
-modelo CSS
--------------------------------------------------
-cd proj1
-ng serve
-locahost: 4200  // para teste só colocar no browser
 
 **************************************************
 PARA O MONGO -> para ver se está funcionando

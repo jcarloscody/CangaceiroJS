@@ -1,0 +1,27 @@
+INSTALAÇÃO DO ANGULAR
+npm  -v
+npm install -g @angular/cli
+
+
+
+---------------------------------------- comando angular
+ng new nome_do_projeto
+cd nome_do_projeto
+ng serve
+
+
+ng generate component nome_componente_dois
+
+ng generate component nome_componente/nome_componente_tres
+
+
+## Quando der conflito de modulos pelo fato de ter mais de um  :::   -m  indica o modulo que quer
+ng g c nome_componente -m app
+
+
+
+----------------------------------------------
+MATERIAL DESIGN 
+material.angular.io 
+
+ng add @angular/material    | adiciona o material angular DESIGN

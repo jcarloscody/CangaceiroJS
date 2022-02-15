@@ -35,13 +35,5 @@ npm i
 npm install --save nome_do_pacote    >>  para instalar pacotes
 
 ********************************************************************************************
-MATERIAL DESIGN 
-material.angular.io 
 
-
-ng new nome-app
-
-ng add @angular/material    | adiciona o material angular DESIGN
-
-ng g c (nome-app)
 
