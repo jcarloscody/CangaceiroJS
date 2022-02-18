@@ -1,0 +1,131 @@
+https://www.youtube.com/watch?v=_sPN3r77Keg&list=PLVShYySLoZex7BU6V9tjAGrkXLE-ha6L6&index=5&ab_channel=MohammadQaderi
+https://github.com/mohammadqaderi/Ecommerce-Demo/blob/master/src/index.html
+angular version
+ng v
+
+node js version
+node -v
+
+shortcuts explain
+i install
+s save
+g generate
+c component
+s service
+cl class
+--port 
+to create angular application
+ng new appName
+
+
+angular cli commands
+. default path is app 
+ng g c path/c-name 
+ng g c path/s-name 
+ng g guard path/guard-name 
+ng pipe path /pipe-name 
+ng g module path/module-name 
+
+npm i ngx-bootstrap ng2-file-upload font-awesome hammerjs express  --save 
+npm i --save 
+npm i --save 
+npm i --save 
+
+. to add angular material 
+ng add @angular/material
+
+--skip-tests ->> sem testes
+
+
+
+
+
+O QUE É GUARD, @Pipe, uikit e outros
+
+
+
+
+
+
+
+
+ng g c components/home
+ng g c components/auth/login       
+ng g c components/auth/register    
+ ng g c components/cart
+ng g c components/category-details 
+ng g c components/order
+ ng g c components/product-details  
+ng g cl models/cart                
+ng g cl models/cart-item
+ng g cl models/cartegory
+ng g cl models/invoice  
+ng g cl models/order  
+ng g cl models/order-item
+ ng g cl models/payment   
+ng g cl models/product
+ng g cl models/profile
+ng g cl models/user   
+CREATE src/app/models/user.ts (22 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g cl models/user-data
+CREATE src/app/models/user-data.ts (26 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g enum enums/category-type      
+CREATE src/app/enums/category-type.ts (29 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g enum enums/order-status       
+CREATE src/app/enums/order-status.ts (28 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g enum enums/payment-methods    
+CREATE src/app/enums/payment-methods.ts (31 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g guard guards/admin-auth       
+CREATE src/app/guards/admin-auth.guard.ts (783 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g guard guards/user-auth        
+? Which interfaces would you like to implement? CanActivate
+CREATE src/app/guards/user-auth.guard.ts (461 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g pipe pipes/product-filter     
+CREATE src/app/pipes/product-filter.pipe.ts (231 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g services/alert/alert
+See "C:\Users\DEVELO~1\AppData\Local\Temp\ng-ThL0ne\angular-errors.log" for further details.
+CREATE src/app/services/alert/alert.service.ts (134 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/auth/auth
+CREATE src/app/services/auth/auth.service.ts (133 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/auth/error-intercepCREATE src/app/services/auth/error-interceptor.service.ts (145 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/auth/token-interceptor
+CREATE src/app/services/auth/token-interceptor.service.ts (145 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/cart/cart
+CREATE src/app/services/cart/cart.service.ts (133 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/category/category  
+CREATE src/app/services/category/category.service.ts (137 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/invoice/invoice    
+CREATE src/app/services/invoice/invoice.service.ts (136 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/order/order        
+CREATE src/app/services/order/order.service.ts (134 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/payment/payment    
+CREATE src/app/services/payment/payment.service.ts (136 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g s services/product/product    
+CREATE src/app/services/product/product.service.ts (136 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g c shared/alert
+CREATE src/app/shared/alert/alert.component.html (20 bytes)
+CREATE src/app/shared/alert/alert.component.ts (271 bytes)
+CREATE src/app/shared/alert/alert.component.css (0 bytes)
+UPDATE src/app/app.module.ts (2112 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g c shared/application-error    
+CREATE src/app/shared/application-error/application-error.component.html (32 bytes)
+CREATE src/app/shared/application-error/application-error.component.ts (318 bytes)
+CREATE src/app/shared/application-error/application-error.component.css (0 bytes)
+UPDATE src/app/app.module.ts (2243 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g module  shared/files
+CREATE src/app/shared/files/files.module.ts (191 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g module  shared/material       
+CREATE src/app/shared/material/material.module.ts (194 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g module  shared/ngx            
+CREATE src/app/shared/ngx/ngx.module.ts (189 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g c shared/page-not-found       
+CREATE src/app/shared/page-not-found/page-not-found.component.html (29 bytes)
+CREATE src/app/shared/page-not-found/page-not-found.component.ts (305 bytes)
+CREATE src/app/shared/page-not-found/page-not-found.component.css (0 bytes)
+UPDATE src/app/app.module.ts (2360 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce> ng g c shared/resource-not-found   
+CREATE src/app/shared/resource-not-found/resource-not-found.component.html (33 bytes)
+CREATE src/app/shared/resource-not-found/resource-not-found.component.ts (321 bytes)
+CREATE src/app/shared/resource-not-found/resource-not-found.component.css (0 bytes)
+UPDATE src/app/app.module.ts (2493 bytes)
+PS C:\Users\developer\Documents\Repositorios\JS-TS\ProjectsAngular\ECommerceAngularNode\e-commerce>   

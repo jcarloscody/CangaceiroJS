@@ -1,9 +1,0 @@
-ng new directives-app
-cd directives-app
-ng add @angular/material
-code .
-
-ng g c NgStyle
-ng g c NgClass
-ng g c NgGif
-ng g c NgFor

@@ -20,6 +20,14 @@ ng g c nome_componente -m app
 
 
 
+### PARA MODULOS 
+ng g m nome_modulo  ::::::: GERA MODULO
+ng g c nome_modulo/qq_componente_q_vc_queira_q_fique_aqui_neste_modulo
+
+### PARA SERVICE 
+ng g s nome_service
+ng g s nome_modulo        :::: para quando tem mais de um modulo e vc quer colocar um service especifico apenas para um determinado modulo
+
 ----------------------------------------------
 MATERIAL DESIGN 
 material.angular.io 

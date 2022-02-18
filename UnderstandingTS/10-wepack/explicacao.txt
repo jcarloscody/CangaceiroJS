@@ -1,0 +1,3 @@
+- é um empacotamento e é uma ferramenta de orquestracao é uma ferramenta que nos ajuda a reduzir
+a quantidade de solicitacoes, agrupando o codigo para que posssamos escrever codigo divido emvarios
+arquivos, mas a web esses arquvos e os agrupa alem disso a pag web é capaz 

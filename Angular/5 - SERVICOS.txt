@@ -11,7 +11,7 @@ injetaveis
 
 
 
-ng g m MODULE1  ::::::: GERA MODULO
+
 ng g m MODULE2
 
 ng g c modulo1/component1    ::::: gera componente dentro de modulo
