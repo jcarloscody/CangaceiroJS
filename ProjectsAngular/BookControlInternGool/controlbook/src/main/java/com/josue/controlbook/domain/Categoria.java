@@ -22,7 +22,7 @@ public class Categoria implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
 	private String nome;
-	private String descricaoString;
+	private String descricao;
 	
 	//proteger contra a serializacao https://stackoverflow.com/questions/47693110/could-not-write-json-infinite-recursion-stackoverflowerror-nested-exception
 	@JsonManagedReference
@@ -33,11 +33,11 @@ public class Categoria implements Serializable {
 		super();
 	}
 
-	public Categoria(Integer id, String nome, String descricaoString) {
+	public Categoria(Integer id, String nome, String descricao) {
 		super();
 		Id = id;
 		this.nome = nome;
-		this.descricaoString = descricaoString;
+		this.descricao = descricao;
 	}
 
 	public Integer getId() {
@@ -56,12 +56,12 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDescricaoString() {
-		return descricaoString;
+	public String getdescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoString(String descricaoString) {
-		this.descricaoString = descricaoString;
+	public void setdescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public List<Livro> getLivros() {
