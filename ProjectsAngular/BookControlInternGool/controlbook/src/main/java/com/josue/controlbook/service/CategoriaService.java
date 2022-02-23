@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.josue.controlbook.domain.Categoria;
+import com.josue.controlbook.dtos.CategoriaDTO;
 import com.josue.controlbook.repositories.CategoriaRepository;
 import com.josue.controlbook.service.exceptions.ObjectNotFoundException;
 
@@ -19,7 +20,6 @@ public class CategoriaService {
 	
 	public Categoria findById(Integer id) {
 		Optional<Categoria> obj = this.categoriaRepository.findById(id); //optional pq pode encontrar ou nao
-		
 		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
@@ -30,6 +30,13 @@ public class CategoriaService {
 	
 	public Categoria create(Categoria obj) {
 		obj.setId(null);
+		return categoriaRepository.save(obj);
+	}
+	
+	public Categoria upDate(Integer id, CategoriaDTO objDTO) {
+		Categoria obj = findById(id);
+		obj.setdescricao(objDTO.getDescricaoString());
+		obj.setNome(objDTO.getNome());
 		return categoriaRepository.save(obj);
 	}
 }
