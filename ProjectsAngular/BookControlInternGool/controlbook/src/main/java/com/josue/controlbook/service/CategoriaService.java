@@ -1,5 +1,6 @@
 package com.josue.controlbook.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,10 @@ public class CategoriaService {
 		Optional<Categoria> obj = this.categoriaRepository.findById(id); //optional pq pode encontrar ou nao
 		
 		return obj.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
+	}
+	
+	
+	public List<Categoria> findAll(){
+		return categoriaRepository.findAll();
 	}
 }

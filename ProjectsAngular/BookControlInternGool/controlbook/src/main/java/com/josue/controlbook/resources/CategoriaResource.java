@@ -1,5 +1,7 @@
 package com.josue.controlbook.resources;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josue.controlbook.domain.Categoria;
+import com.josue.controlbook.dtos.CategoriaDTO;
 import com.josue.controlbook.service.CategoriaService;
+
+
 
 @RestController
 @RequestMapping(value = "/categorias")
@@ -21,6 +26,13 @@ public class CategoriaResource {
 	public ResponseEntity<Categoria> findById(@PathVariable Integer id){
 		Categoria obj = this.categoriaService.findById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<CategoriaDTO>> findAll(){
+		List<Categoria> listCategorias = categoriaService.findAll();
+		List<CategoriaDTO> categoriaDTOs = listCategorias.stream().map((obj) -> new CategoriaDTO(obj)).toList();
+		return ResponseEntity.ok().body(categoriaDTOs);
 	}
 }
 
