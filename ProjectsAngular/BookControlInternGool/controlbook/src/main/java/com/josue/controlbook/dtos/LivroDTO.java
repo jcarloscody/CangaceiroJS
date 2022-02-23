@@ -2,49 +2,41 @@ package com.josue.controlbook.dtos;
 
 import java.io.Serializable;
 
-import com.josue.controlbook.domain.Categoria;
+import com.josue.controlbook.domain.Livro;
 
 public class LivroDTO  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer Id;
-	private String nome;
-	private String descricaoString;
+	private Integer id;
+	private String titulo;
 
 
 	public LivroDTO() {
 		super();
 	}
 
-	public LivroDTO(Categoria obj) {
+	public LivroDTO(Livro obj) {
 		super();
-		Id = obj.getId();
-		this.nome = obj.getNome();
-		this.descricaoString = obj.getdescricao();
+		id = obj.getId();
+		titulo = obj.getTitulo();
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getDescricaoString() {
-		return descricaoString;
-	}
 
-	public void setDescricaoString(String descricaoString) {
-		this.descricaoString = descricaoString;
-	}
 }
