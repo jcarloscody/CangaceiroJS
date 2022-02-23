@@ -30,6 +30,18 @@ public class LivroService {
 		categoriaService.findById(id_cat); //caso não exita retorna uma exceção
 		return livroRepository.findAllByIdCategoria(id_cat);
 	}
+
+	public Livro upDate(Integer id, Livro obj) {
+		Livro newObj = findById(id);
+		upDateData(newObj, obj);
+		return livroRepository.save(newObj);
+	}
+
+	private void upDateData(Livro newObj, Livro obj) {
+		newObj.setTitulo(obj.getTitulo());
+		newObj.setTexto(obj.getTexto());
+		newObj.setNome_autor(obj.getNome_autor());
+	}
 	
 	/*
 	public List<Livro> findAll(){
