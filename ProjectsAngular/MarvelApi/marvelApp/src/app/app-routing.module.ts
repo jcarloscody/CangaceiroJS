@@ -2,7 +2,6 @@ import { StoriesComponent } from './stories/stories.component';
 import { SeriesComponent } from './series/series.component';
 import { ComicsComponent } from './comics/comics.component';
 import { CharactersComponent } from './characters/characters.component';
-import { CharacterComponent } from './characters/character/character.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

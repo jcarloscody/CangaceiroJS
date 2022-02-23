@@ -1,3 +1,15 @@
 - é um empacotamento e é uma ferramenta de orquestracao é uma ferramenta que nos ajuda a reduzir
 a quantidade de solicitacoes, agrupando o codigo para que posssamos escrever codigo divido emvarios
 arquivos, mas a web esses arquvos e os agrupa alem disso a pag web é capaz 
+
+
+npm i --save-dev webpack webpack-cli webpack-dev-server typescript ts-loader
+
+
+webpack - é o coracao de toda essa configuracao . nos permite conectar certas funcionalidades para bombear
+codigo mais baixo e tbm transformar nosso codigo e transformar nossa parte de codio.
+
+webpack-cli - precisamos para executar comandos da pagina web em nonosso proj e server de definicao de pag
+da web
+
+ts-loader - informa onde o webpack como converter o codigo de tipo em js assim como a pg da web é capaz 

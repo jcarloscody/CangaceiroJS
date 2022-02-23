@@ -22,7 +22,9 @@ import { ComicsComponent } from './comics/comics.component';
 import { SerieComponent } from './series/serie/serie.component';
 import { SeriesComponent } from './series/series.component';
 import { StorieComponent } from './stories/storie/storie.component';
-import { StoriesComponent } from './stories/stories.component'
+import { StoriesComponent } from './stories/stories.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,

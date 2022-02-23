@@ -33,3 +33,4 @@ MATERIAL DESIGN
 material.angular.io 
 
 ng add @angular/material    | adiciona o material angular DESIGN
+npm install --save @angular/flex-layout

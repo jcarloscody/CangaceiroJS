@@ -1,0 +1,6 @@
+Spring Data Jpa: facilita na criação dos repositorios. ele nos livra de ter q criar as DAO's (data access object - objeto de acesso 
+a dados ou transferencia de dados), uma interface que faz a comunicação com a persistencia e o bd. criavamos o sql na mao. o Spring  
+já deixa pre implementado.
+
+ Spring Data Jpa faz parte de um projeto maior que é o Spring Data, e este projeto tbm veio facilitar de forma geral a implementacao
+ desta persistencia e ele tem tbm outros projetos alem do Data Jpa como exemplo o Spring Data Communs, Kvelio, LDAP.
