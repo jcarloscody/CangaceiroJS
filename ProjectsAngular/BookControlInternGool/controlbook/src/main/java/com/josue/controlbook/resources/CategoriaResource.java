@@ -3,7 +3,7 @@ package com.josue.controlbook.resources;
 import java.net.URI;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,14 +44,14 @@ public class CategoriaResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
+	public ResponseEntity<Categoria> create(@Valid @RequestBody Categoria obj){
 		Categoria post = categoriaService.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoriaDTO> upDate(@PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
+	public ResponseEntity<CategoriaDTO> upDate(@Valid @PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
 		Categoria newObj = categoriaService.upDate(id, objDTO);
 		return ResponseEntity.ok().body(new CategoriaDTO(newObj));
 	}

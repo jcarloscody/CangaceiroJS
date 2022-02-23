@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,20 +46,20 @@ public class LivroResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Livro> upDate(@PathVariable Integer id, @RequestBody Livro obj) {
+	public ResponseEntity<Livro> upDate( @PathVariable Integer id, @Valid @RequestBody Livro obj) {
 		Livro newObj = livroService.upDate(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<Livro> upDatePatch(@PathVariable Integer id, @RequestBody Livro obj) {
+	public ResponseEntity<Livro> upDatePatch( @PathVariable Integer id, @Valid @RequestBody Livro obj) {
 		Livro newObj = livroService.upDate(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PostMapping // 8080/livros?categoria=3
 	public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer cat_id,
-			@RequestBody Livro obj) {
+			@Valid  @RequestBody Livro obj) {
 		Livro newObj = livroService.create(cat_id, obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
 				.buildAndExpand(newObj.getId()).toUri();

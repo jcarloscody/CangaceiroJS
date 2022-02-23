@@ -2,6 +2,10 @@ package com.josue.controlbook.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.josue.controlbook.domain.Categoria;
 
 public class CategoriaDTO  implements Serializable {
@@ -9,8 +13,13 @@ public class CategoriaDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer Id;
+	@NotEmpty(message = "Fiel must be full")
+	@Length(min = 3, max = 100, message = "campo deve ter 3-100 caracters")
 	private String nome;
-	private String descricaoString;
+	
+	@NotEmpty(message = "Fiel must be full")
+	@Length(min = 3, max = 200, message = "campo deve ter 3-100 caracters")
+	private String descricao;
 
 
 	public CategoriaDTO() {
@@ -21,7 +30,7 @@ public class CategoriaDTO  implements Serializable {
 		super();
 		Id = obj.getId();
 		this.nome = obj.getNome();
-		this.descricaoString = obj.getdescricao();
+		this.descricao = obj.getdescricao();
 	}
 
 	public Integer getId() {
@@ -40,11 +49,11 @@ public class CategoriaDTO  implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDescricaoString() {
-		return descricaoString;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoString(String descricaoString) {
-		this.descricaoString = descricaoString;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }

@@ -8,6 +8,9 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -21,7 +24,13 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	
+	@NotEmpty(message = "Fiel must be full")
+	@Length(min = 3, max = 100, message = "campo deve ter 3-100 caracters")
 	private String nome;
+	
+	@NotEmpty(message = "Fiel must be full")
+	@Length(min = 3, max = 200, message = "campo deve ter 3-100 caracters")
 	private String descricao;
 	
 	//proteger contra a serializacao https://stackoverflow.com/questions/47693110/could-not-write-json-infinite-recursion-stackoverflowerror-nested-exception
