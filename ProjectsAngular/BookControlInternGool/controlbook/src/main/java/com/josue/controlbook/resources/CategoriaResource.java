@@ -7,6 +7,7 @@ import javax.servlet.ServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,6 @@ public class CategoriaResource {
 	public ResponseEntity<Categoria> create(@RequestBody Categoria obj){
 		Categoria post = categoriaService.create(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId()).toUri();
-		
 		return ResponseEntity.created(uri).build();
 	}
 	
@@ -54,6 +54,12 @@ public class CategoriaResource {
 	public ResponseEntity<CategoriaDTO> upDate(@PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
 		Categoria newObj = categoriaService.upDate(id, objDTO);
 		return ResponseEntity.ok().body(new CategoriaDTO(newObj));
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
+		categoriaService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }
 
