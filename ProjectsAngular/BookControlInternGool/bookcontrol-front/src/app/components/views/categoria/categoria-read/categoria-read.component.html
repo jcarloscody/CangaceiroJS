@@ -5,7 +5,7 @@
     </div>
 
     
-    <button mat-stroked-button color="primary" class="mat-elevation-z8">Nova Categoria</button>
+    <button (click)="navegarParaCategoriaCreate()" mat-stroked-button color="primary" class="mat-elevation-z8">Nova Categoria</button>
     <div class="mat-elevation-z8 content-table">
       <table mat-table [dataSource]="categorias">
           <!-- ID Column -->
