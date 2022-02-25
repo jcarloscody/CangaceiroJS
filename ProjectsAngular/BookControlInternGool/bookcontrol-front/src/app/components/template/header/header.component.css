@@ -6,9 +6,9 @@ img {
     background-color: black;
     justify-content: end;
     height: 10%;
+    color: white;
 }
 
 h1 {
-    color: white;
     margin-left: 20px;
 }
