@@ -15,3 +15,20 @@
 table{
     width: 100%;
 }
+
+.edit {
+    color: yellowgreen;
+}
+
+.delete {
+    color: red;
+    padding-left: 10px;
+}
+
+.mat-header {
+    width: 4rem;
+}
+
+.content button {
+    margin-bottom: 1rem;
+}
