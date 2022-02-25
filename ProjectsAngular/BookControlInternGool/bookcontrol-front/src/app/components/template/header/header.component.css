@@ -1,5 +1,17 @@
+.mat-toolbar{
+    background-color: black;
+    justify-content: center;
+    height: 12%;
+    color: white;
+}
+
 img {
     height: 3rem;
+}
+
+.linhas {
+    position: fixed;
+    left: 40px;
 }
 
 .linha2{
@@ -26,14 +38,10 @@ img {
     height: 1.5%;
     width: 15%;
     background-color: red;
+    border-bottom-right-radius: 0px;
 }
 
-.mat-toolbar{
-    background-color: black;
-    justify-content: center;
-    height: 12%;
-    color: white;
-}
+
 
 h1 {
     margin-left: 20px;
