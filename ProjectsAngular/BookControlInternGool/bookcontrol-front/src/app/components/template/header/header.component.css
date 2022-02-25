@@ -2,10 +2,36 @@ img {
     height: 3rem;
 }
 
+.linha2{
+    position: fixed;
+    left: 0;
+    margin-top: -1.2%;
+    height: 1.5%;
+    width: 15%;
+    background-color: red;
+}
+
+.linha1{
+    position: fixed;
+    left: 0;
+    height: 1.5%;
+    width: 10%;
+    background-color: red;
+}
+
+.linha3{
+    position: fixed;
+    left: 0;
+    margin-top: 1.2%;
+    height: 1.5%;
+    width: 15%;
+    background-color: red;
+}
+
 .mat-toolbar{
     background-color: black;
-    justify-content: end;
-    height: 10%;
+    justify-content: center;
+    height: 12%;
     color: white;
 }
 
