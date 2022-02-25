@@ -24,6 +24,9 @@ ng g c nome_componente -m app
 ng g m nome_modulo  ::::::: GERA MODULO
 ng g c nome_modulo/qq_componente_q_vc_queira_q_fique_aqui_neste_modulo
 
+INTERFACE
+ng g i nome_interface
+
 ### PARA SERVICE 
 ng g s nome_service
 ng g s nome_modulo        :::: para quando tem mais de um modulo e vc quer colocar um service especifico apenas para um determinado modulo
