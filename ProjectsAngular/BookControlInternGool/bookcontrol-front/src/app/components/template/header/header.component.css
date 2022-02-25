@@ -1,0 +1,14 @@
+img {
+    height: 3rem;
+}
+
+.mat-toolbar{
+    background-color: black;
+    justify-content: end;
+    height: 10%;
+}
+
+h1 {
+    color: white;
+    margin-left: 20px;
+}
