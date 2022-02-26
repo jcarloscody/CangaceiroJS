@@ -23,6 +23,7 @@ ng g c nome_componente -m app
 ### PARA MODULOS 
 ng g m nome_modulo  ::::::: GERA MODULO
 ng g c nome_modulo/qq_componente_q_vc_queira_q_fique_aqui_neste_modulo
+ng g m nome_modulo -m nome_modulo_raiz --routing      :::> --routing   vai fazer com q dentro do modulo seja adicionado um modulo proprio para adicionar um roteamento daquele modulo 
 
 INTERFACE
 ng g i nome_interface

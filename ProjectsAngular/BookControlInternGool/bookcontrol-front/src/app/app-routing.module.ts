@@ -6,10 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/views/home/home.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'categorias', component: CategoriaReadComponent},
   {path: 'categorias/create', component: CategoriaCreateComponent},
-  {path: 'categorias/delete/:id', component: CategoriaDeleteComponent}
+  {path: 'categorias/delete/:id', component: CategoriaDeleteComponent},
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
 ];
 
 @NgModule({
