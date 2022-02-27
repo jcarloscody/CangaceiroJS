@@ -20,12 +20,22 @@ export class CategoriaService {
     return this.http.get<Categoria[]>(url);
   }
 
+  findById(id: String): Observable<Categoria> {
+    const url = `${this.baseUrl}/categorias/${id}`;
+    return this.http.get<Categoria>(url);
+  }
+
   create(categoria: Categoria): Observable<Categoria>{
     const url = `${this.baseUrl}/categorias`;
     return this.http.post<Categoria>(url, categoria);
   }
 
-  mensagem(msg: String): void {
+  delete (id: String): Observable<void> {
+    const url = `${this.baseUrl}/categorias/${id}`;
+    return this.http.delete<void>(url);
+  }
+
+  mensagem(msg: string): void {
     this._snack.open(`${msg}`, 'OK!', {horizontalPosition: 'center', verticalPosition: 'bottom', duration: 50000,})
   }
 }

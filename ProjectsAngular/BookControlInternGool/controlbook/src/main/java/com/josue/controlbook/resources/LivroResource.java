@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,12 +32,14 @@ public class LivroResource {
 	@Autowired
 	private LivroService livroService;
 
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Livro> findById(@PathVariable Integer id) {
 		Livro obj = this.livroService.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@CrossOrigin
 	@GetMapping // 8080/livros?categoria=1 listar todos os livros de uma determinada categoria
 	public ResponseEntity<List<LivroDTO>> findAll(
 			@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat) {
@@ -45,18 +48,21 @@ public class LivroResource {
 		return ResponseEntity.ok().body(listDTO);
 	}
 
+	@CrossOrigin
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Livro> upDate( @PathVariable Integer id, @Valid @RequestBody Livro obj) {
 		Livro newObj = livroService.upDate(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
+	@CrossOrigin
 	@PatchMapping(value = "/{id}")
 	public ResponseEntity<Livro> upDatePatch( @PathVariable Integer id, @Valid @RequestBody Livro obj) {
 		Livro newObj = livroService.upDate(id, obj);
 		return ResponseEntity.ok().body(newObj);
 	}
 
+	@CrossOrigin
 	@PostMapping // 8080/livros?categoria=3
 	public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer cat_id,
 			@Valid  @RequestBody Livro obj) {
@@ -66,6 +72,7 @@ public class LivroResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+	@CrossOrigin
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		livroService.delete(id);

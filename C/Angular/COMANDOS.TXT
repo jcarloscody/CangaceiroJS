@@ -38,3 +38,14 @@ material.angular.io
 
 ng add @angular/material    | adiciona o material angular DESIGN
 npm install --save @angular/flex-layout
+
+
+
+
+
+
+
+-------------------------------------------------------
+NODE 
+bcryptjs - serve para criptografar e descriptografar uma chava
+jsonwebtoken - faz toda a parte relacionada ao token

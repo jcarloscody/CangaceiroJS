@@ -2,6 +2,7 @@ package com.josue.controlbook.resources.exceptions;
 
 import javax.servlet.ServletRequest;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -37,5 +38,11 @@ public class ResourceExceptionHandler {
 			validationError.setErrors(f.getField(), f.getDefaultMessage());
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationError);
+	}
+	
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseEntity<StandardError> constraintViolationException(ConstraintViolationException e, ServletRequest request){
+		StandardError standardError = new StandardError(System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value(), "Você está tentando excluir uma categoria ligada a algum livro cadastrado no sistema");
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
 	}
 }

@@ -31,6 +31,7 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaService categoriaService;
 	
+	@CrossOrigin
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Categoria> findById(@PathVariable Integer id){
 		Categoria obj = this.categoriaService.findById(id);
@@ -53,12 +54,14 @@ public class CategoriaResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@CrossOrigin
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<CategoriaDTO> upDate(@Valid @PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
 		Categoria newObj = categoriaService.upDate(id, objDTO);
 		return ResponseEntity.ok().body(new CategoriaDTO(newObj));
 	}
 	
+	@CrossOrigin
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		categoriaService.delete(id);
