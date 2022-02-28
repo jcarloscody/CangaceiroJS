@@ -1,4 +1,17 @@
-<app-game-button color="red" (guess)="guess($event)" ></app-game-button>
-<app-game-button color="blue" (guess)="guess($event)"></app-game-button>
-<app-game-button color="green" (guess)="guess($event)"></app-game-button>
-<app-game-button color="yellow" (guess)="guess($event)"></app-game-button>
+<div class="container">
+    <div class="flex center">
+        <app-game-button [active]="colors.red" color="red" (guess)="guess($event)" ></app-game-button>
+    </div>
+
+    <div class="flex middle">
+        <app-game-button [active]="colors.blue" color="blue" (guess)="guess($event)"></app-game-button>
+        <p style="font-size: 2rem;">{{count}}</p>
+        <app-game-button [active]="colors.green" color="green" (guess)="guess($event)"></app-game-button>
+    </div>
+
+    <div class="flex center">
+        <app-game-button [active]="colors.yellow" color="yellow" (guess)="guess($event)"></app-game-button>
+    </div>
+
+</div>
+

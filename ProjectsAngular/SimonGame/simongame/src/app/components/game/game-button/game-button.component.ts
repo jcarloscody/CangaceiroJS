@@ -14,6 +14,9 @@ export class GameButtonComponent implements OnInit {
   @Output()
   guess: EventEmitter<string> = new EventEmitter<string>();
 
+  @Input()
+  active: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

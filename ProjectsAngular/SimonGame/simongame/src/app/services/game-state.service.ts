@@ -27,7 +27,8 @@ export class GameStateService {
     this.simon.push(this.randomColor);
   }
 
-  generateSimon(){
+  generateSimon(): string[]{
+    
     for (let i = 0; i < this.count; i++) {
       this.appendSimon();
     }

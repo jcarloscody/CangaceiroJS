@@ -1,3 +1,4 @@
+import { sleep } from './../../models/constants';
 import { GameStateService } from './../../services/game-state.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,13 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  count!: number;
+  colors: any = {
+    red: false,
+    blue: false,
+    yellow: false,
+    green: false
+  };
 
   constructor(private game: GameStateService) { }
 
   ngOnInit(): void {
     this.game.state.subscribe(
-      (state)=>{
-        console.warn(state)
+      async (state)=>{
+        if (state.count != this.count) {
+          await sleep(1000);
+          this.count = state.count;
+          this.teasePlayer(state.simon);
+        }
       }
     );
 
@@ -23,5 +35,15 @@ export class GameComponent implements OnInit {
 
   guess(event: string) : void {
     this.game.playerGuess(event);
+  }
+
+  async teasePlayer(simon: string[]){
+    for (let i = 0; i<simon.length; i++){
+      this.colors[simon[i]] = true;
+      await sleep(500);
+      this.colors[simon[i]] = false;
+      await sleep(500);
+    }
+
   }
 }
