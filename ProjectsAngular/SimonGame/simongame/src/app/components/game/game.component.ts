@@ -1,3 +1,4 @@
+import { GameStateService } from './../../services/game-state.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private game: GameStateService) { }
 
   ngOnInit(): void {
+    this.game.state.subscribe(
+      (state)=>{
+        console.warn(state)
+      }
+    );
+
+    this.game.generateSimon();
+
   }
 
+  guess(event: string) : void {
+    this.game.playerGuess(event);
+  }
 }

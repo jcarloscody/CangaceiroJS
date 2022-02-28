@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-game-button',
@@ -10,13 +11,16 @@ export class GameButtonComponent implements OnInit {
   @Input()
   color!: string;
 
+  @Output()
+  guess: EventEmitter<string> = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   onClick(){
-    console.log(`${this.color} was clicked`)
+    this.guess.emit(this.color);
   }
 
 }

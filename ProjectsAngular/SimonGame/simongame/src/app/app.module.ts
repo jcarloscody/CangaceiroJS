@@ -1,3 +1,4 @@
+import { GameStateService } from './services/game-state.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,7 +15,7 @@ import { GameButtonComponent } from './components/game/game-button/game-button.c
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [GameStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
