@@ -29,14 +29,20 @@ export class LivroService {
     this._snack.open(`${msg}`, 'OK!', {horizontalPosition: 'center', verticalPosition: 'bottom', duration: 50000,})
   }
 
+
+  findById(id: String): Observable<Livro> {
+    const url = `${this.baseUrl}/livros/${id}`;
+    return this.http.get<Livro>(url);
+  }
+
   findAll ():Observable<Livro[]> {
     const url = `${this.baseUrl}/livros`
     return this.http.get<Livro[]>(url);
   }
 
-  findById(id: String): Observable<Livro> {
-    const url = `${this.baseUrl}/livros/${id}`;
-    return this.http.get<Livro>(url);
+  update(livro: Livro): Observable<void> {
+    const url = `${this.baseUrl}/livros/${livro.id}`;
+    return this.http.put<void>(url, livro);
   }
 
   
@@ -46,9 +52,6 @@ export class LivroService {
     return this.http.delete<void>(url);
   }
 
-  update(livro: Livro): Observable<void> {
-    const url = `${this.baseUrl}/livros/${livro.id}`;
-    return this.http.put<void>(url, livro);
-  }
+  
 
 }
