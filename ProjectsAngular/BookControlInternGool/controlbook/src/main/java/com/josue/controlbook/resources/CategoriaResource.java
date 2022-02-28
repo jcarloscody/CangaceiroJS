@@ -56,7 +56,7 @@ public class CategoriaResource {
 	
 	@CrossOrigin
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoriaDTO> upDate(@Valid @PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
+	public ResponseEntity<CategoriaDTO> upDate( @PathVariable Integer id, @Valid @RequestBody CategoriaDTO objDTO){
 		Categoria newObj = categoriaService.upDate(id, objDTO);
 		return ResponseEntity.ok().body(new CategoriaDTO(newObj));
 	}

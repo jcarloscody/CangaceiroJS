@@ -26,16 +26,29 @@ export class CategoriaUpdateComponent implements OnInit {
     this.serviceCategoria.findById(this.categoria.id!).subscribe(
       resposta => {
         this.categoria = resposta;
-        console.warn(this.categoria);
       }
     )
   }
 
-
+  update(): void {
+    this.serviceCategoria.update(this.categoria).subscribe(
+      (res)=>{
+        this.router.navigate(["/categorias"]);
+        this.serviceCategoria.mensagem("Atualização realizada com Sucesso");
+      }, 
+      ( err) => {
+        let msg: string = '';
+        for (let i = 0; i<err.error.errors.length; i++){
+          msg += `Coluna: ${err.error.errors[i].fildName} - Mensagem: ${err.error.errors[i].message} \n`;
+        }
+        this.serviceCategoria.mensagem(msg);
+      }
+    );
+  }
 
 
   cancel(): void {
-    this.router.navigate(["categorias"])
+    this.router.navigate(["categorias"]);
   }
 
 }
