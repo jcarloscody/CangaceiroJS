@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LivroService } from './../livro.service';
 import { Livro } from './../livro.model';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-livro-create',
@@ -10,23 +11,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LivroCreateComponent implements OnInit {
 
-  livro: Livro = {
-    id : "",
-    titulo: "",
-    nome_autor: "",
-    texto: ""
-  }
+  titulo = new FormControl('', [Validators.minLength(3)]);
+  autor = new FormControl('', [Validators.minLength(3)]);
+  texto = new FormControl('', [Validators.minLength(3)]);
+
+  id_cat!: String;
 
   constructor(private serviceLivro: LivroService, private router: Router, private routerActive: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.livro.id = this.routerActive.snapshot.paramMap.get("id")!;
+    this.id_cat= this.routerActive.snapshot.paramMap.get("id_cat")!;
+  }
+
+  getMessage() {
+    if (this.titulo.invalid) {
+      return "O campo título deve ter no mínimo 3 Caracteres e no máximo 100"
+    }
+    if (this.autor.invalid) {
+      return "O campo Autor deve ter no mínimo 3 Caracteres e no máximo 100"
+    }
+    if (this.texto.invalid) {
+      return "O campo Texto deve ter no mínimo 3 Caracteres e no máximo 100"
+    }
+    return false;
   }
 
   create(): void {
-    this.serviceLivro.create(this.livro, this.livro.id!).subscribe((resposta)=>{
+    this.serviceLivro.create({titulo: this.titulo.value, nome_autor: this.autor.value, texto: this.texto.value}, this.id_cat!).subscribe((resposta)=>{
       this.serviceLivro.mensagem("Livro Inserido com Sucesso!");
-      this.router.navigate(["/livros"]);
+      this.router.navigate([`categorias/${this.id_cat}/livros`]);
     }, erro => {
       console.warn(erro)
       if (erro.error.errors){
@@ -40,7 +53,7 @@ export class LivroCreateComponent implements OnInit {
   }
 
   cancel (): void{
-    this.router.navigate(["/livros"]);
+    this.router.navigate([`categorias/${this.id_cat}/livros`]);
   }
 
 }

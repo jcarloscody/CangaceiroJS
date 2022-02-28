@@ -14,8 +14,8 @@ const routes: Routes = [
   {path: 'categorias/create', component: CategoriaCreateComponent},
   {path: 'categorias/delete/:id', component: CategoriaDeleteComponent},
   {path: 'categorias/update/:id', component: CategoriaUpdateComponent},
-  {path: 'categorias/:id/livros', component: LivroReadAllComponent},
-  {path: 'categorias/:id/livros/create', component: LivroCreateComponent},
+  {path: 'categorias/:id_cat/livros', component: LivroReadAllComponent},
+  {path: 'categorias/:id_cat/livros/create', component: LivroCreateComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
 ];
 

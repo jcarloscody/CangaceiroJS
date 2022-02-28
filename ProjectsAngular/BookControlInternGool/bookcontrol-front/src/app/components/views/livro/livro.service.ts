@@ -20,6 +20,15 @@ export class LivroService {
     return this.http.get<Livro[]>(url);
   }
 
+  create(livro: Livro, id_cat: String): Observable<Livro>{
+    const url = `${this.baseUrl}/livros?categoria=${id_cat}`;
+    return this.http.post<Livro>(url, livro);
+  }
+
+  mensagem(msg: string): void {
+    this._snack.open(`${msg}`, 'OK!', {horizontalPosition: 'center', verticalPosition: 'bottom', duration: 50000,})
+  }
+
   findAll ():Observable<Livro[]> {
     const url = `${this.baseUrl}/livros`
     return this.http.get<Livro[]>(url);
@@ -30,10 +39,7 @@ export class LivroService {
     return this.http.get<Livro>(url);
   }
 
-  create(livro: Livro, id_cat: String): Observable<Livro>{
-    const url = `${this.baseUrl}/livros?categoria=${id_cat}`;
-    return this.http.post<Livro>(url, livro);
-  }
+  
 
   delete (id: String): Observable<void> {
     const url = `${this.baseUrl}/livros/${id}`;
@@ -45,7 +51,4 @@ export class LivroService {
     return this.http.put<void>(url, livro);
   }
 
-  mensagem(msg: string): void {
-    this._snack.open(`${msg}`, 'OK!', {horizontalPosition: 'center', verticalPosition: 'bottom', duration: 50000,})
-  }
 }

@@ -12,7 +12,7 @@ export class LivroReadAllComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes'];
   livros: Livro[] = [];
-  id_cat = this.routerActivated.snapshot.paramMap.get('id')!;
+  id_cat = this.routerActivated.snapshot.paramMap.get('id_cat')!;
 
   constructor(private livroService: LivroService, private router: Router, private routerActivated: ActivatedRoute) { }
 
