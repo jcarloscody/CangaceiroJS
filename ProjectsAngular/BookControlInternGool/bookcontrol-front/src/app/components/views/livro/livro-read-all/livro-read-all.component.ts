@@ -12,13 +12,12 @@ export class LivroReadAllComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes'];
   livros: Livro[] = [];
+  id_cat = this.routerActivated.snapshot.paramMap.get('id')!;
 
   constructor(private livroService: LivroService, private router: Router, private routerActivated: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let id_cat = this.routerActivated.snapshot.paramMap.get('id')!;
-    this.findAllByCategoria(id_cat);
-
+    this.findAllByCategoria(this.id_cat);
   }
 
   findAllByCategoria (id_cat: String): void {
@@ -28,7 +27,7 @@ export class LivroReadAllComponent implements OnInit {
   }
 
   navegarParaLivroCreate(): void {
-    this.router.navigate(["livros/create"]);
+    this.router.navigate([`categorias/${this.id_cat}/livros/create`]);
   }
 
 
