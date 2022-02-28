@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Livro } from '../livro.model';
 import { LivroService } from '../livro.service';
 
@@ -13,15 +13,16 @@ export class LivroReadAllComponent implements OnInit {
   displayedColumns: string[] = ['id', 'titulo', 'livros', 'acoes'];
   livros: Livro[] = [];
 
-  constructor(private livroService: LivroService, private router: Router) { }
+  constructor(private livroService: LivroService, private router: Router, private routerActivated: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.findAll()
+    let id_cat = this.routerActivated.snapshot.paramMap.get('id')!;
+    this.findAllByCategoria(id_cat);
+
   }
 
-  findAll (): void {
-    this.livroService.findAll().subscribe((livros)=>{
-      
+  findAllByCategoria (id_cat: String): void {
+    this.livroService.findAllByCategoria(id_cat).subscribe((livros)=>{
       this.livros = livros;
     })
   }

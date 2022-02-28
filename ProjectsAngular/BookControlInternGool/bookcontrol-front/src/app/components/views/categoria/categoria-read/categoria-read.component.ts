@@ -1,3 +1,4 @@
+import { LivroService } from './../../livro/livro.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categoria } from '../categoria.model';
@@ -12,8 +13,9 @@ export class CategoriaReadComponent implements OnInit {
   
   displayedColumns: string[] = ['id', 'nome', 'descricao','livros', 'acoes'];
   categorias: Categoria[] = [];
+  activeLin: boolean = false;
 
-  constructor(private categoriaService: CategoriaService, private router: Router) { }
+  constructor(private categoriaService: CategoriaService, private router: Router, private livroService: LivroService) { }
 
   ngOnInit(): void {
     this.findAll()
@@ -21,7 +23,6 @@ export class CategoriaReadComponent implements OnInit {
 
   findAll (): void {
     this.categoriaService.findAll().subscribe((categorias)=>{
-      
       this.categorias = categorias;
     })
   }
