@@ -1,6 +1,10 @@
 package com.portalexame.portalexameback.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,8 +22,25 @@ public class User {
     private boolean enabled = true;
     private String profile;
 
+    //usuario tem muitos perfis
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER) //DIFERENÇA ENTRE LAZY E EAGER https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
+    @JsonIgnore   //https://pt.stackoverflow.com/questions/250729/quais-as-maneiras-de-evitar-recursividade-infinita-sem-o-uso-da-anota%C3%A7%C3%A3o-jsonign
+    private Set<UserRole> userRole = new HashSet<UserRole>();
+
     public User(){
 
+    }
+
+    public User(Long id, String username, String password, String firstName, String lastName, String email, String phone, boolean enabled, String profile) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.enabled = enabled;
+        this.profile = profile;
     }
 
     public Long getId() {
@@ -92,5 +113,13 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public Set<UserRole> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(Set<UserRole> userRole) {
+        this.userRole = userRole;
     }
 }
