@@ -22,7 +22,7 @@ public class User {
     private boolean enabled = true;
     private String profile;
 
-    //usuario tem muitos perfis
+    //usuario tem muitos perfis       aboutCASCADE: https://stackoverflow.com/questions/13027214/what-is-the-meaning-of-the-cascadetype-all-for-a-manytoone-jpa-association#:~:text=The%20meaning%20of%20CascadeType.,to%20removing%20the%20related%20User%20.
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER) //DIFERENÇA ENTRE LAZY E EAGER https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
     @JsonIgnore   //https://pt.stackoverflow.com/questions/250729/quais-as-maneiras-de-evitar-recursividade-infinita-sem-o-uso-da-anota%C3%A7%C3%A3o-jsonign
     private Set<UserRole> userRole = new HashSet<UserRole>();

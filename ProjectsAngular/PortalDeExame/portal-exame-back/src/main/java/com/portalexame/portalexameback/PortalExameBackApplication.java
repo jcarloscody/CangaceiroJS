@@ -26,7 +26,7 @@ public class PortalExameBackApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Iniciando codigo");
 
-		User user = new User();
+		/*User user = new User();
 		user.setFirstName("josue");
 		user.setLastName("Carlos");
 		user.setUsername("josue");
@@ -47,7 +47,7 @@ public class PortalExameBackApplication implements CommandLineRunner {
 		userRoleSet.add(userRole);
 
 		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1.getFirstName());
+		System.out.println(user1.getFirstName());*/
 
 	}
 }
