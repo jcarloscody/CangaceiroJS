@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@6.3.3/dist/global/rxjs.umd.js"></script> 
+    <title>Observable e Promises</title>
+</head>
+<body>
+    <h3>observable e promises sao encapsuladores de dados. vc pode encapsular os dados com uma observable e ter 
+        acesso aos metodos que o RxJS te dá.</h3>
+    
+    <h1>Promises</h1>
+    <ul>
+        <li>Emite Unico valor</li>
+        <li>Execussão imediata (Eager)</li>
+        <li>Compartilhada(mulicast)</li>
+        <li>Promise sempre são assíncronas</li>
+        <li></li>
+    </ul>
+
+    <h1>Observable</h1>
+    <ul>
+        <li>Emite multiplos valores</li>
+        <li>Execussão sob demanda (lazy)</li>
+        <li>compartilhada ou não (multicast/unicast)</li>
+        <li> Observable pode ser tanto síncronas quanto assíncronas.</li>
+        <li></li>
+    </ul>
+
+    <script>
+        const {Observable} = rxjs;
+        /*
+        
+        Promise.resolve(1)
+            .then(num => {
+                console.warn("Promises!")
+                console.log(num)
+            })
+
+        new Promise((resolve, reject) => { //como vc pode notar a promise so tratar um unico valor
+            resolve(1)
+            resolve(2) //mesmo se vc colocar outro valor aqui, nao sera emitido
+            reject("rejeitado")
+        })
+        .then(num => {
+            console.warn("Promises!")
+            console.log(num)
+        }).catch(value => {
+            console.warn("Promises!")
+            console.log(value)
+        })
+
+        new Promise((resolve, reject)=>{
+            console.warn("promise sem .then - comportamento eager")
+            resolve("mesmo sem o .then a promise dará innício")
+        })
+
+
+        let cont = 0
+        const obs = Observable.create((observer) => {//mais aqui pode emitir mais de um valor
+            observer.next(1)
+            observer.next("outro valor")
+        });
+
+        setTimeout(()=>{
+            obs.subscribe(num=> {  //como o comportamento da observable é lazy, é necessário o subscribe para ele dar início
+                console.warn("Observable tem comportamento Laze")
+                cont++
+                console.log("Observable Emitted -> "+cont)
+                console.log(num)
+            })
+        }, 3000)
+*/
+
+        console.error("Comportamento multicast ou unicast")
+
+
+        let mpromises = 0
+        let muobservable = 0
+
+        const promessa = new Promise((resolve, reject)=>{
+            console.log("iniciando promise...")
+            mpromises++
+            resolve(`consumido promises emitted ->  ${mpromises}`)
+        })
+
+        const observ = Observable.create((observer)=>{
+            muobservable++
+            console.warn("Observable pode ser consumida varias vezes ou nao , ou seja, é compartilhado ou nao  - multicast/unicast")
+            observer.next(`consumido observable emitted -> ${muobservable}`)
+        })
+
+        promessa.then(v => {
+            console.warn("promessa só pode ser consumida apenas uma vez, ou seja, é compartilhado - multicast")
+            console.log(v)
+        })
+        observ.subscribe(v => console.log(v))
+
+        setTimeout(()=>{
+            promessa.then(v => {
+                console.warn("promessa só pode ser consumida apenas uma vez, ou seja, é compartilhado - multicast")
+                console.log(v)
+            })
+            observ.subscribe(v => console.log(v))
+        }, 3000)
+
+    </script>
+</body>
+</html>
