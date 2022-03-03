@@ -1,3 +1,4 @@
+//https://github.com/cod3rcursos/javascript-funcional
 function fn3() {
     setTimeout(() => { //-> 2 - coloca no event queue  // 5 -sai do event queue e coloca na stack
         console.log("timeout")
