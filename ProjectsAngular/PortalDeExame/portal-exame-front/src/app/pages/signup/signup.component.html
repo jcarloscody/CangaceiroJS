@@ -12,7 +12,7 @@
                 <form (ngSubmit)="formSubmit()" class="text-center" style="width: 100%;">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input [(ngModel)]="user.username" name="username" matInput placeholder="Coloque aqui seu nome de usuário">
+                        <input [(ngModel)]="user.username" required name="username" matInput placeholder="Coloque aqui seu nome de usuário">
                         <mat-hint>Hint</mat-hint>
                     </mat-form-field>
 
@@ -20,7 +20,7 @@
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input [(ngModel)]="user.password" name="password" type="password"  matInput placeholder="Sua senha">
+                        <input [(ngModel)]="user.password" required name="password" type="password"  matInput placeholder="Sua senha">
                     </mat-form-field>
 
 
@@ -34,27 +34,27 @@
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input [(ngModel)]="user.firstName" name="firstname" matInput placeholder="Digite seu primeiro nome">
+                        <input [(ngModel)]="user.firstName" required name="firstname" matInput placeholder="Digite seu primeiro nome">
                     </mat-form-field>
 
 
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input [(ngModel)]="user.lastName" name="lastname" matInput placeholder="Digite seu segundo nome">
+                        <input [(ngModel)]="user.lastName" required name="lastname" matInput placeholder="Digite seu segundo nome">
                     </mat-form-field>
 
 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input [(ngModel)]="user.email" name="email" type="email" matInput placeholder="exemplo@gmail.com">
+                        <input [(ngModel)]="user.email" required name="email" type="email" matInput placeholder="exemplo@gmail.com">
                     </mat-form-field>
 
 
        
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Phone</mat-label>
-                        <input [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Telefone">
+                        <input [(ngModel)]="user.phone" required name="phone" type="number" matInput placeholder="Telefone">
                     </mat-form-field>
 
 
