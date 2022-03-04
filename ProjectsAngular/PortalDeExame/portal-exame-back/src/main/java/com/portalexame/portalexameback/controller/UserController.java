@@ -12,11 +12,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserServiceImplem userServiceImplem;
+
 
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
@@ -35,11 +37,13 @@ public class UserController {
         return this.userServiceImplem.createUser(user, userRoleSet);
     }
 
+
     //get user por username
     @GetMapping("/{username}")
     public User getUser( @PathVariable("username") String username){ //diferença entre pathvariable e getparam https://cursos.alura.com.br/forum/topico-diferenca-entre-pathvariable-e-requestparam-99402?gclid=CjwKCAiAyPyQBhB6EiwAFUuaklh0EEGTaG4KbaoHpIGZ1XC0ULrfTuYawYzxQd7vQnVof9ihtU4w4xoCMCIQAvD_BwE
         return this.userServiceImplem.getUser(username);
     }
+
 
     //delete de user por id
     @DeleteMapping("/{userId}")

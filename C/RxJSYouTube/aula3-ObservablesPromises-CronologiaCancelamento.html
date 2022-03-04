@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@6.3.3/dist/global/rxjs.umd.js"></script> 
+    <title>Observable e Promises - CronologiaCancelamento</title>
+</head>
+<body>
+    <h3></h3>
+    
+    <h1>Promises</h1>
+    <ul>
+        <li>Sempre sao assincronos</li>
+        <li>Não Cancelável (mas podemos conseguir o comportamento Cancelável com algumas bibliotecas como o )</li>
+    </ul>
+
+    <h1>Observable</h1>
+    <ul>
+        <li>Sincronos ou Assincronos</li>
+        <li>Cancelável</li>
+    </ul>
+
+    <script>
+        const {Observable} = rxjs;
+        const {share} = rxjs.operators; //com este share podemos ter um comportamento da observable semelhante a promise quanto ao compartilhamento, assim tendo um estado compartilhado.
+        let contadorObservable = 0;
+
+        const observer = Observable.create((observer)=>{
+            console.log("Iniciando o observable");
+            observer.next(`Contador Observable Sincrono - setTimeOut 3s: ${++contadorObservable}`)
+            setTimeout(()=>{
+                observer.next(`Contador Observable Assincrono - setTimeOut 3s: ${++contadorObservable}`); //como o valor produzido aqui não é assincrono, então esta observable será sincrona
+            }, 3000);
+        }).pipe(
+            share()
+        )
+
+        observer.subscribe((value)=>{console.log(value)})
+        observer.subscribe((value)=>console.log(value))
+
+        console.warn("teste")
+
+        const promessa = new Promise((resolve,reject)=>{
+            resolve("sempre venho por último pq sempre sou assincrono!")
+        })
+
+        promessa.then((v)=>console.log(`promessa: ${v}`))
+
+
+        let contadorObservableInterval=0;
+        const observableInterval = Observable.create((value)=>{
+            let interval = setInterval(() => {
+                value.next(`Contador Observable Assincrono - setInterval 1s: ${++contadorObservableInterval}`)
+            }, 1000);
+
+            return () => {clearInterval(interval); };
+        });
+
+        let obsInterval = observableInterval.subscribe((v)=>console.log(v))
+
+        setTimeout(() => {
+            obsInterval.unsubscribe();
+        }, 10000);
+
+    </script>
+</body>
+</html>

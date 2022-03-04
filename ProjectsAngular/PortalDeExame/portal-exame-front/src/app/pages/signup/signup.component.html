@@ -7,62 +7,65 @@
                     <img src="../../../assets/sign.png" alt="" srcset="">
                 </div>
                 <h3 class="text-center">Registre-se aqui</h3>
-
-                <form class="text-center" style="width: 100%;">
+                
+                <!-- {{user | json}} -->
+                <form (ngSubmit)="formSubmit()" class="text-center" style="width: 100%;">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
-                        <input  matInput placeholder="Coloque aqui seu nome de usuário">
+                        <input [(ngModel)]="user.username" name="username" matInput placeholder="Coloque aqui seu nome de usuário">
+                        <mat-hint>Hint</mat-hint>
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password</mat-label>
-                        <input type="password"  matInput placeholder="Sua senha">
+                        <input [(ngModel)]="user.password" name="password" type="password"  matInput placeholder="Sua senha">
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Password Confirm</mat-label>
                         <input type="password" matInput placeholder="Confirme sua senha">
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input  matInput placeholder="Digite seu primeiro nome">
+                        <input [(ngModel)]="user.firstName" name="firstname" matInput placeholder="Digite seu primeiro nome">
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input  matInput placeholder="Digite seu segundo nome">
+                        <input [(ngModel)]="user.lastName" name="lastname" matInput placeholder="Digite seu segundo nome">
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="exemplo@gmail.com">
+                        <input [(ngModel)]="user.email" name="email" type="email" matInput placeholder="exemplo@gmail.com">
                     </mat-form-field>
-                </form>
 
-                <form class="text-center" style="width: 100%;">
+
+       
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Phone</mat-label>
-                        <input  type="number" matInput placeholder="Telefone">
+                        <input [(ngModel)]="user.phone" name="phone" type="number" matInput placeholder="Telefone">
                     </mat-form-field>
-                </form>
+
 
                 <div class="container">
                     <div class="text-center">
-                        <button class="espacamento" mat-raised-button color="primary">Registrar</button>
+                        <button type="submit" class="espacamento" mat-raised-button color="primary">Registrar</button>
                         <button class="espacamento" mat-raised-button color="warn">Cancelar</button>
                     </div>
                 </div>
+
+                </form>
             </div>
 
         </div>
