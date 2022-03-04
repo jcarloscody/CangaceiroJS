@@ -38,6 +38,7 @@ Object.defineProperty(Produto.prototype, 'descString', {
     get: function () {
         return `${this._desc * 100}% de desconto!`
     },
+
 })
 
 
