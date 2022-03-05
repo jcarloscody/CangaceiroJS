@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@6.3.3/dist/global/rxjs.umd.js"></script> 
+    <title>Subjects e Subscriptions</title>
+</head>
+<body>
+    <h3></h3>
+    
+    <h1>Subjects</h1>
+    <ul>
+        <li>tipo especial de observable, </li>
+        <li>sempre multicast - status comparilhado</li>
+        <li>/posso fazer com q as emissoes do observer sejam transmitida para o subject</li>
+        <li>o subjet emite valor independente de quem esta ouvidno, é o comportamento mulicast tbm. por isso ele fica em baixo aproducao de dados, pq se ficar em cima perde </li>
+        <li>se ficar em cima da subscricao perde os valores emitidos. e se foi produzido antes da subscricao temous outros tidos de subject para recuperar como:</li>
+        <li>subjects, behavarsubject,  replaysubject, assincsubject</li>
+ </li>
+    </ul>
+
+    <h1>Subscriptions</h1>
+    <ul>
+        <li>é a forma que vc tem de poder se inscrever em canal (observable), que é uma fluxo de dados</li>
+        <li>e fluxo de dados é uma stream</li>
+        <li>subscribe tem 3 callbakc  (valor, error, complite)</li>
+        <li>complite: nao tem nenhuma propriedade mas indica q sua observable acabou, caso seja finito</li>
+        <li>quando nós temos uma subscricao, retorna uma subscriptions</li>
+        <li>cadeia de unsubscribe</li>
+    </ul>
+
+    <script>
+    //     const {Observable} = rxjs;
+    //     let contadorObservable1 = 0, contadorObservable2 = 0, contadorObservable3 = 0;
+    //     let contagemErro = 50
+
+    //     const observer1 = Observable.create((observer)=>{
+    //         let intervalo = setInterval(() => {
+    //             contadorObservable1++;
+    //             observer.next(contadorObservable1);
+    //             if (contadorObservable1==10) {
+    //                 observer.complete();
+    //             } else if (contadorObservable1 > contagemErro) {
+    //                 observer.error("deu treta")
+    //             }
+    //         }, 1000);
+           
+    //         return ()=>{clearInterval(intervalo)}
+    //     })
+
+    //     const observer2 = Observable.create((observer)=>{
+    //         let intervalo = setInterval(() => {
+    //             contadorObservable2++;
+    //             observer.next(contadorObservable2);
+    //             if (contadorObservable2==10) {
+    //                 observer.complete();
+    //             } else if (contadorObservable2 > contagemErro) {
+    //                 observer.error("deu treta")
+    //             }
+    //         }, 1000);
+           
+    //         return ()=>{clearInterval(intervalo)}
+    //     })
+
+    //     const observer3 = Observable.create((observer)=>{
+    //         let intervalo = setInterval(() => {
+    //             contadorObservable3++;
+    //             observer.next(contadorObservable3);
+    //             if (contadorObservable3==10) {
+    //                 observer.complete();
+    //             } else if (contadorObservable3 > contagemErro) {
+    //                 observer.error("deu treta")
+    //             }
+    //         }, 1000);
+           
+    //         return ()=>{clearInterval(intervalo)}
+    //     })
+
+    //     let subscribe1 = observer1.subscribe(
+    //         (value)=>{console.log(`${value}     subscribe 1`)},
+    //         (value)=>{console.error(`Erro no obsevable ->  ${value}   subscribe 1`)},
+    //         ()=>{console.warn(`completado `)},
+    //     )
+
+    //     let subscribe2;
+    //    setTimeout(() => {
+    //     subscribe2 = observer2.subscribe({
+    //         next: v => console.log(`${v}   subscribe 2`),
+    //         error: v => console.log(`Erro no obsevable ->  ${v}   subscribe 2`),
+    //         completo: ()=>console.warn("fim")
+    //     }) 
+    //    }, 2000);
+
+       
+    //    let subscribe3 ;
+    //    setTimeout(() => {
+    //         //com a subscricao de uma observable , é retornado uma subscription, com isso podendo fazer a unsubscribe
+    //         subscribe3 = observer3.subscribe( 
+    //             (value)=>{console.log(`${value} de ${contagemErro} -   subscribe 3`)},
+    //             (value)=>{console.error(`Erro no obsevable ->  ${value}   subscribe 3`)},
+    //             ()=>{console.warn(`completado `)},
+    //         )
+    //     }, 11000);
+
+    //     setTimeout(() => {
+    //         console.warn("unsubscribe do subscription 3")
+    //         subscribe3.unsubscribe()
+    //     }, 20000);
+
+    //     setTimeout(() => {
+    //         console.warn("unsubscribe do subscription 1")
+    //         subscribe1.unsubscribe()
+    //     }, 25000);
+
+    //     subscribe5 = observer3.subscribe( 
+    //             (value)=>{console.log(`${value} de ${contagemErro} -   subscribe 5`)})
+
+    //     subscribe6 = observer3.subscribe( 
+    //     (value)=>{console.log(`${value} de ${contagemErro} -   subscribe 6`)})
+
+    //     subscribe7 = observer3.subscribe( 
+    //             (value)=>{console.log(`${value} de ${contagemErro} -   subscribe 7`)})
+
+    //     //cadeia de unsubscribe
+    //     subscribe5.add(subscribe6)
+    //     subscribe5.add(subscribe7)  //opostamente temos o remove
+    //     setTimeout(() => {
+    //         console.error("cadeia de unsubscribe")
+    //         subscribe5.unsubscribe()
+    //     }, 5000);
+
+    const {Subject, Observable} = rxjs;
+    const sub = new Subject();
+
+    let subscribeSub1 = sub.subscribe( 
+        (value)=>{console.log(`${value} -   subscribeSub1`)},
+        (value)=>{console.error(`Erro no    subscribeSub1`)},
+    ) 
+
+    let subscribeSub2 = sub.subscribe( 
+        (value)=>{console.log(`${value} -   subscribeSub2`)},
+        (value)=>{console.error(`Erro no    subscribeSub2`)},
+    )
+
+    sub.next(1);
+    sub.next(2);
+    //sub.error("erro")
+
+
+    const produtorObservable = Observable.create((observer)=>{
+        observer.next("do produtorObservable 1")
+        observer.next("do produtorObservable 2")
+        observer.next("do produtorObservable 3")
+        observer.next("do produtorObservable 4")
+        observer.error("do produtorObservable 4")
+        
+    })
+
+    let subscribeSub3 = sub.subscribe( 
+        (value)=>{console.log(`${value} -   subscribeSub3`)},
+        (value)=>{console.error(`Erro no    subscribeSub3`)},
+    )
+
+    const subjec = produtorObservable.subscribe(sub) //posso fazer com q as emissoes do observer sejam transmitida para o subject
+
+    sub.next("do produtorSub ")
+
+    </script>
+</body>
+</html>
