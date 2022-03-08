@@ -30,7 +30,7 @@ public class UserServiceImplem implements UserService {
             throw  new Exception("Already registred!");
         } else  {
             for (UserRole ur: userRole){
-                this.roleRepository.save(ur.getRole());
+                this.roleRepository.save(ur.getRole()); //GUARDA  O ROLE
             }
             user.getUserRole().addAll(userRole);
             local = this.userRepository.save(user);

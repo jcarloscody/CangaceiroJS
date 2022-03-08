@@ -7,7 +7,7 @@
     <span>Portal de Exames</span>
     <span class="example-spacer"></span>
 
-    <a [routerLink]='"/login"' mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <a [routerLink]='"/login"' (click)="logOut()"  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>login</mat-icon>
     </a>
 

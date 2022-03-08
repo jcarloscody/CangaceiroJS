@@ -3,6 +3,7 @@ package com.portalexame.portalexameback.controller;
 import com.portalexame.portalexameback.config.JwtUtils;
 import com.portalexame.portalexameback.model.JwtRequest;
 import com.portalexame.portalexameback.model.JwtResponse;
+import com.portalexame.portalexameback.model.User;
 import com.portalexame.portalexameback.service.implem.UserDetailsServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +13,12 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
+@CrossOrigin("*")
 public class AuthenticateController {
 
     @Autowired
@@ -56,5 +58,11 @@ public class AuthenticateController {
         }catch (BadCredentialsException e){
             throw new Exception("Invalid Credencial " + e.getMessage());
         }
+    }
+
+    //retorna o usuario atual
+    @GetMapping("/current-user")
+    public User getCurrentUser(Principal principal){
+        return ((User) this.userDetailsServiceImp.loadUserByUsername(principal.getName()));
     }
 }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@6.3.3/dist/global/rxjs.umd.js"></script> 
+    <title>BehaviorSubjects, AsyncSubjects e ReplaySubjects </title>
+</head>
+<body>
+    <h3></h3>
+    
+    <h1>BehaviorSubjects </h1>
+    <ul>
+       <li>sempre inicia com um valor</li>
+       <li>ele sempre mantem o ultimo valor para ser emitido a qq novo subscribe</li>
+    </ul>
+
+    <h1> AsyncSubjects </h1>
+    <ul>
+        <li>ele só recebe a ultima emissao do subject e somente quando o subject for completado </li>
+    </ul>
+
+    <h1> ReplaySubjects </h1>
+    <ul>
+        <li>eles armazenam uma quantidade definida de valores emitidos</li>
+        <li>no construtor colocamos quantidade de valores que ele vai propagar para quem se subscreveu</li>
+        <li>o primeiro subscribe pega todos, mas os proximos pega a quantidade definidade no construtor</li>
+        <li>ainda ele pode receber um segundo argumento que é um tempo em milissegundos em que ele vai armazenar essa informação </li>
+    </ul>
+
+    <script>
+        const {ReplaySubject, BehaviorSubject, AsyncSubject } = rxjs;
+
+        const sub = new BehaviorSubject(0);
+        sub.next(1)
+        sub.next(2)
+        sub.next(3)
+
+
+        sub.subscribe({
+            next: num => console.log(`Primeiro subscribe do BehaviorSubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+        
+        sub.next(4)
+        sub.next(5)
+        sub.next(6)
+
+        sub.subscribe({
+            next: num => console.log(`Segundo subscribe do BehaviorSubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+
+        sub.next(7)
+        sub.next(8)
+        sub.next(9)
+
+
+        sub.subscribe({
+            next: num => console.log(`Terceiro subscribe do BehaviorSubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+
+        sub.next(10)
+        sub.next(11)
+        sub.next(12)
+
+
+        console.warn("ReplaySubject")
+
+        const replay = new ReplaySubject(3, 500)  //quantidade de valores que ele vai propagar para quem se subscreveu
+        replay.next(1)
+        replay.next(2)
+        replay.next(3)
+
+        replay.subscribe({
+            next: num => console.log(`Primeiro subscribe do ReplaySubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+
+        replay.next(4)
+        replay.next(5)
+        replay.next(6)
+        replay.next(7)
+        replay.next(8)
+
+        replay.subscribe({
+            next: num => console.log(`Segundo subscribe do ReplaySubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+
+        setTimeout(() => {
+            console.log("DEPOIS DE 600 MILISEGUNDOS   ReplaySubject")
+            replay.subscribe({
+            next: num => console.log(`Terceiro subscribe do ReplaySubject -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+        }, 600);
+
+
+
+        console.warn("AsyncSubjects")
+        const async = new AsyncSubject() 
+        async.next(1)
+        async.next(2)
+        async.next(3)
+
+        async.subscribe({
+            next: num => console.log(`Primeiro subscribe do AsyncSubjects -> ${num}`),
+            error: erro => console.log(erro),
+            complete: _ => console.log("fim")
+        })
+
+        async.next(4)
+        async.next(5)
+        async.next(6)
+        async.next(7)
+        async.next(8)
+        async.complete()
+
+      
+
+    </script>
+</body>
+</html>
