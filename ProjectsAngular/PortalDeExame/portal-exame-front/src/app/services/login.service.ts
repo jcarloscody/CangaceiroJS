@@ -48,8 +48,10 @@ export class LoginService {
   //pegar o user
   public getUser(){
     let user = localStorage.getItem('user');
+
     if (user != null) {
-      return JSON.parse(user)
+      let u = JSON.parse(user);
+      return u
     } else {
       this.logout();
       return null;

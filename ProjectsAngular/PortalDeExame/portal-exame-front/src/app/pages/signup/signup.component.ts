@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit {
   }
 
   formSubmit(){
-
     if (this.user.username == '' || this.user.username==null) {
       this.snackBar.open("o username não estar vazio!", "Ok!", {duration: 4000, horizontalPosition: 'end', verticalPosition: 'top'})
     }

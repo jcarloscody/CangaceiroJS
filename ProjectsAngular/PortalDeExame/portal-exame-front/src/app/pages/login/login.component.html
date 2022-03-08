@@ -9,7 +9,7 @@
 
                     <h1 class="text-center mb10"> Login </h1>
                     {{loginData | json}}
-                    <form (ngSubmit)="formSubmit()">
+                    <form  autocomplete="false"  (ngSubmit)="formSubmit()">
                         <mat-form-field class="full-width mb20" appearance="outline">
                             <mat-label>Username</mat-label>
                             <input [(ngModel)]="loginData.username" name="username" required matInput placeholder="Coloque aqui seu nome de usuário">

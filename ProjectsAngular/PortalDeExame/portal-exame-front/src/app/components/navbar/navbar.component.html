@@ -7,12 +7,22 @@
     <span>Portal de Exames</span>
     <span class="example-spacer"></span>
 
-    <a [routerLink]='"/login"' (click)="logOut()"  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>login</mat-icon>
+    <a  [routerLink]='"/login"' *ngIf="!loginService.isLoggedIn() " mat-button>
+     Login
     </a>
 
-    <a [routerLink]='"/signup"' mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>app_registration</mat-icon>
+    <a [routerLink]='"/signup"'  *ngIf="!loginService.isLoggedIn()"  mat-button >
+      Registre-se
+    </a>
+
+    <a  [routerLink]='"/login"' (click)="logOut()" *ngIf="loginService.isLoggedIn()"  mat-button >
+      
+        Logout
+  
+    </a>
+
+    <a *ngIf="loginService.isLoggedIn()"  mat-button >
+     Perfil: {{ loginService.getUser().username}}
     </a>
 
   </mat-toolbar>

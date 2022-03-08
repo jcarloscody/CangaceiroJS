@@ -19,7 +19,6 @@ export class AuthInterceptor implements HttpInterceptor {
         //adicionar o jwt q estar no locastorege no request
         const token = this.loginService.getToken();
         let authReq = req;
-        console.log('inside interceptor')
         if(token!=null){
             authReq=authReq.clone({setHeaders: {Authorization: `Bearer ${token}`}})
         }

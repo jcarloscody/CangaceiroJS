@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../models/user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
   token: any ;
 
-  constructor(private snackBar: MatSnackBar, private serviceLogin: LoginService) { }
+  constructor(private snackBar: MatSnackBar, private serviceLogin: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,18 +28,17 @@ export class LoginComponent implements OnInit {
       this.snackBar.open("Usuário ou senha são necessários!", "Ok!",{duration: 4000})
       return;
     }
-    console.warn(this.serviceLogin.getUserRole())
 
     //pegar o token
    this.serviceLogin.generateToken(this.loginData).subscribe((token: any)=>{
-    this.serviceLogin.loginUser(token.token)
+    this.serviceLogin.loginUser(token.token) //set do token no localstorage
     this.serviceLogin.getCurrentUser().subscribe((user: any)=>{ //pegar o dados do usuario
       this.serviceLogin.setUser(user);
       //redireciona para adm ou normal
       if (this.serviceLogin.getUserRole()=="ADMIN") {
-        window.location.href = "/admin"
+        this.router.navigate(['/admin'])
       } else if (this.serviceLogin.getUserRole()=="GERAL"){
-        window.location.href = "/user-dashboard"
+        this.router.navigate(['/user-dashboard'])
       } else {
         this.serviceLogin.logout()
       }
