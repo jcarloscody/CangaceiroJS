@@ -8,16 +8,21 @@ import {  Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  username:string = '';
+  isLoggedIn = false;
+  user = null;
 
   constructor(public loginService: LoginService) { }
  
 
   ngOnInit(): void {
+    this.isLoggedIn = this.loginService.isLoggedIn();
+    this.user = this.loginService.getUser();
   }
 
   logOut(){
     this.loginService.logout();
+    this.isLoggedIn = false;
+    this.user = null;
     window.location.reload()
   }
 

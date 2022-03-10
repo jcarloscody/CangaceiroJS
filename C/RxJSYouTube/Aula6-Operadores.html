@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@reactivex/rxjs@6.3.3/dist/global/rxjs.umd.js"></script> 
+    <title> Operadores </title>
+</head>
+<body>
+    <h3></h3>
+    
+    <h1> Operadores  </h1>
+    <ul>
+       <ul>OF</ul>
+       <li>pode rece</li>
+       <ul>FROM</ul>
+       <li>recebe estrutura de dados e a partir disso transforma em observable</li>
+       <li>posso passar uma promisse ou qq estrutura interavel</li>
+       <ul>INTERVAL</ul>
+       <li>emitir valores com um certo intervalo de tempo</li>
+       <ul>RANGE</ul>
+       <li></li>
+       <ul>FROMEVENT</ul>
+       <li>consigo transforma eventos js em observable assim como podemos transformar promises em observables</li>
+       <ul>DEFER</ul>
+       <li>encapsula alguma funcao qq q seja mas q ela so vai ser executada a partir do momento que eu tenho um subscribe</li>
+       <ul>BINDNODECALLBACK</ul>
+       <li></li>
+       <button id="button">fromEvent</button>
+
+    </ul>
+
+    <script>
+        const {of, from, interval, range, generate, fromEvent, defer, bindCallback, bindNodeCallback } = rxjs;
+        const {take} = rxjs.operators
+
+      of(1, true, "estudo de of", [1,2,3]).subscribe(v=> console.log(`of: ${v}`))
+
+      from([1,2,3,5,6,3]).subscribe(v=> console.log(`from: ${v}`))
+      from(Promise.resolve("Emitidno uma promisse com o from")).subscribe(v=> console.log(`from: ${v}`))
+      function* g() {
+          let i = 0;
+          while (true) {
+              yield i++;
+          }
+      }
+
+      from(g())
+      .pipe(
+          take(30)
+      )
+      .subscribe(v=> console.log(`from: ${v}`))
+
+      from(of(1,2,3,5,6,7))
+      .pipe(
+          take(30)
+      )
+      .subscribe(v=> console.log(`from: ${v}`))
+
+
+      range(100,10) //valor inicial, quantos valores vai emitir 
+      .subscribe(v=> console.log(`range : ${v}`))
+
+      generate(0, x=>x<10, x=>x+1)//valor inicial, funcao de condicao de parada, funcao de incremento  ------- parecido com o for. o x é imutavel entao nao vale x++
+        .subscribe(v=> console.log(`generate : ${v}`))
+
+      const button = document.querySelector('button')
+      fromEvent(button, 'click')
+      .subscribe(v=> console.log(v))
+
+
+      defer(()=>{return of(1)}).subscribe(v=> console.log(`defer : ${v}`))
+
+
+      const a = (a, cb)=>{
+          cb(a)
+      }
+
+      bindCallback(a)(10)
+      .subscribe(v=> console.log(`bindCallBack : ${v}`))
+
+
+      const aa = (a, cb)=>{
+          cb(new Error("erro "),a)
+      }
+
+      bindNodeCallback(a)(10)
+      .subscribe(
+          v=> console.log(`bindCallBack : ${v}`),
+          error=> console.log(`bindCallBack erro: ${error}`), )
+    </script>
+</body>
+</html>
