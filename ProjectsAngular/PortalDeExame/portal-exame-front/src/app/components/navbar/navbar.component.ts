@@ -9,7 +9,7 @@ import {  Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn = false;
-  user = null;
+  user = this.loginService.getUser() || null;
 
   constructor(public loginService: LoginService) { }
  
@@ -17,12 +17,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.loginService.isLoggedIn();
     this.user = this.loginService.getUser();
+    this.loginService.loginStatusSubject.asObservable().subscribe(data=>{
+      this.isLoggedIn = this.loginService.isLoggedIn();
+      this.user = this.loginService.getUser();
+    })
   }
 
   logOut(){
     this.loginService.logout();
-    this.isLoggedIn = false;
-    this.user = null;
+   // this.loginService.loginStatusSubject.next(false);
     window.location.reload()
   }
 

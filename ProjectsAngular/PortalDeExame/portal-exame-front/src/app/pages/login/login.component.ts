@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
       //redireciona para adm ou normal
       if (this.serviceLogin.getUserRole()=="ADMIN") {
         this.router.navigate(['/admin'])
+        this.serviceLogin.loginStatusSubject.next(true);
       } else if (this.serviceLogin.getUserRole()=="GERAL"){
-        this.router.navigate(['/user-dashboard'])
+        this.router.navigate(['/user-dashboard']);
+        this.serviceLogin.loginStatusSubject.next(true);
       } else {
         this.serviceLogin.logout()
       }

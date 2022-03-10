@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,9 @@ public class PortalExameBackApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PortalExameBackApplication.class, args);
 	}
@@ -26,17 +30,17 @@ public class PortalExameBackApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		System.out.println("Iniciando codigo");
 
-		/*User user = new User();
+		User user = new User();
 		user.setFirstName("josue");
 		user.setLastName("Carlos");
 		user.setUsername("josue");
-		user.setPassword("123");
+		user.setPassword(this.bCryptPasswordEncoder.encode("josue"));
 		user.setEmail("josue@gmail.com");
 		user.setProfile("default.png");
 
 		Role role = new Role();
 		role.setRoleId(44L);
-		role.setRoleName("GERAL");
+		role.setRoleName("ADMIN");
 
 		Set<UserRole> userRoleSet = new HashSet<>();
 
@@ -47,7 +51,7 @@ public class PortalExameBackApplication implements CommandLineRunner {
 		userRoleSet.add(userRole);
 
 		User user1 = this.userService.createUser(user, userRoleSet);
-		System.out.println(user1.getFirstName());*/
+		System.out.println(user1.getFirstName());
 
 	}
 }

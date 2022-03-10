@@ -6,6 +6,7 @@ import com.portalexame.portalexameback.model.UserRole;
 import com.portalexame.portalexameback.service.UserService;
 import com.portalexame.portalexameback.service.implem.UserServiceImplem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -19,9 +20,17 @@ public class UserController {
     @Autowired
     private UserServiceImplem userServiceImplem;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
+        user.setProfile("default.png");
+        //criptografia da senha com o bcryptpasswordencoder
+
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+
         Set<UserRole> userRoleSet = new HashSet<>();
 
         Role role = new Role();
