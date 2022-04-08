@@ -26,14 +26,16 @@ class PilhaAbacaxi {
     }
 
     pop() {
-        if (!this.eVazio) {
+        if (!this.eVazio()) {
             this.indiceTopo--;
+
+            // return this.armazenamento[this.indiceTopo]
         }
     }
 
 
     topoValor() {
-        if (!this.eVazio) {
+        if (!this.eVazio()) {
             return this.armazenamento[this.indiceTopo - 1]
         }
     }
@@ -57,23 +59,51 @@ class PilhaAbacaxi {
     toString() {
         let word = '';
 
-        for (let i = this.indiceTopo; i > this.quantidade(); this.indiceTopo--) {
-            if (!this.eVazio) {
+        for (let i = this.indiceTopo - 1; i > 0; i--) {
+
+            if (!this.eVazio()) {
                 word += this.armazenamento[i];
                 console.log(`indice ${i}   value: ${this.armazenamento[i]}`);
             }
+
+
         }
         return word;
     }
 }
 
 let abacaxi = new PilhaAbacaxi();
-abacaxi.push("A")
-abacaxi.push("b")
-abacaxi.push("c")
-abacaxi.push("d")
 
+console.log(`está cheio? ${abacaxi.eCheio()}`)
+console.log(`está vazio? ${abacaxi.eVazio()}`)
+console.log(`quantidade: ${abacaxi.quantidade()}`)
+console.log(`capacidade: ${abacaxi.capacidade()}`)
+
+abacaxi.push("A")
+abacaxi.push("B")
+abacaxi.push("C")
 console.log(abacaxi.toString())
+
+console.log()
+console.log()
+console.log()
+
+console.log(abacaxi.topoValor())
+
+abacaxi.pop()
+
+console.log(abacaxi.topoValor())
+
+console.log(`está cheio? ${abacaxi.eCheio()}`)
+console.log(`está vazio? ${abacaxi.eVazio()}`)
+console.log(`quantidade: ${abacaxi.quantidade()}`)
+console.log(`capacidade: ${abacaxi.capacidade()}`)
+
+
+
+
+
+
 
 
 
